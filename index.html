@@ -1,5 +1,72 @@
 <html>
-<body>
-<p>hello world</p>
-</body>
+	<head>
+    	<link rel="stylesheet" href="style.css" media="all" />
+		<script language="Javascript">
+
+		var i = 1;
+		window.setInterval(function(){
+			var labelOld = "item" + i;
+			document.getElementById(labelOld).className = "unSelected";
+			if(i == 9){
+				i = 1;
+			} else {
+				i = i+1;
+			}
+			var label = "item" + i;
+			document.getElementById(label).className = "selected";
+		}, 1000);
+		
+		</script>
+	</head>
+	<body>
+		<div id="wrapper">
+			<h1>Dress to the Max</h1>
+			<div id="character">
+				<img src="character.jpg" height="400px">
+			</div>
+			<div id="navigation">
+				<ul onkeydown="keypress1(event);" id="navlist">
+					<li id="item1" class="selected">
+						<img src="shirt.jpg" height="100px"><br/ >
+						Shirt
+					</li>
+					<li id="item2">
+						<img src="jacket.jpg" height="100px"><br/ >
+						Jacket
+					</li>
+					<li id="item3">
+						<img src="pants.jpg" height="90px"><br/ >
+						Pants
+					</li>
+					<li id="item4">
+						<img src="shoes.jpg" height="86px"><br/ >
+						Shoes
+					</li>
+					<li id="item5">
+						<img src="hat.jpg" height="85px"><br/ >
+						Hats
+					</li>
+					<li id="item6">
+						<img src="scarf.jpg" height="85px"><br/ >
+						Scarf
+					</li>
+					<li id="item7">
+						<img src="backgrounds.jpg" height="100px"><br/ >
+						Shirt
+					</li>
+					<li id="item8">
+						<img src="face.jpg" height="100px"><br/ >
+						Character
+					</li>
+					<li id="item9">
+						<img src="settings.jpg" height="100px"><br/ >
+						Settings
+					</li>
+				</ul>
+			</div>
+		</div>
+		<p class="footer">
+		UNC Chapel Hill, Maegan Clawges, Krista Katzenmeyer, Jon Medenblik
+		</p>
+	</body>
 </html>
