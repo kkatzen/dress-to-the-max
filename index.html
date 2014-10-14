@@ -2,9 +2,17 @@
 	<head>
     	<link rel="stylesheet" href="style.css" media="all" />
 		<script language="Javascript">
-		function load() {
 		
-			var images = ["shirt","jacket","pants","shoes","hat","scarf","backgrounds","face","settings"];
+		var timeIntreval = 1500;
+		
+		var images = ["shirt","jacket","pants","shoes","hat","scarf","backgrounds","face","settings"];
+		var actions = ["View Shirts","View Jackets","View Pants","View Shoes","View Hats","View Scarves","View Backgrounds","View Character Options","Change Settings"];
+
+		function load() {
+			//First item should already be selected
+			document.getElementById("item0").className = "selected";
+			document.getElementById("actionText").innerHTML = actions[0];
+
 			for (var j = 0; j < images.length; j++) { 
 				var label = "item" + j;
 			    document.getElementById(label).innerHTML = "<img src='images/" + images[j] + ".jpg' height='80px'><br/ >" + images[j];
@@ -16,15 +24,18 @@
 		window.setInterval(function(){
 			var labelOld = "item" + i;
 			document.getElementById(labelOld).className = "unSelected";
+
 			if(i == 8){
 				i = 0;
 			} else {
 				i = i+1;
 			}
+
+			document.getElementById("actionText").innerHTML = actions[i];
 			var label = "item" + i;
 			document.getElementById(label).className = "selected";
 			
-		}, 1000);
+		}, timeIntreval);
 		
 		</script>
 	</head>
@@ -35,6 +46,7 @@
 				<img src="images/character.jpg" height="400px">
 			</div>
 			<div id="navigation">
+				Action: <span id ="actionText">lakjsdlfkafsd</span>
 				<ul onkeydown="keypress1(event);" id="navlist">
 					<li id="item0" ></li>
 					<li id="item1" ></li>
