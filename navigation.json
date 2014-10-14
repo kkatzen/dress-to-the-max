@@ -1,0 +1,75 @@
+var navigation = {
+    "derp":"derp",
+    "parents":
+    [
+        {
+            "filename":"shirt",
+            "imageCaption":"Shirt",
+            "actionName":"View Shirts",
+            "children":
+            [
+                {
+                    "filename":"shirt",
+                    "imageCaption":"Upright Shirt",
+                    "localion":"Wear Shirt"
+                },
+                {
+                    "filename":"shirt2",
+                    "imageCaption":"Right Shirt",
+                    "localion":"Wear Right Shirt"
+                },
+                {
+                    "filename":"shirt3",
+                    "imageCaption":"upsidedown Shirt",
+                    "localion":"Wear upsidedown Shirt"
+                },
+                {
+                    "filename":"shirt4",
+                    "imageCaption":"Left Shirt",
+                    "localion":"Wear Left Shirt"
+                }
+
+            ]
+        },
+        {
+            "filename":"pants",
+            "imageCaption":"Pants",
+            "actionName":"View Pants"
+        },
+        {
+            "filename":"shoes",
+            "imageCaption":"Shoes",
+            "actionName":"View Shoes"
+        },
+        {
+            "filename":"jacket",
+            "imageCaption":"Jackets",
+            "actionName":"View Jackets"
+        },
+        {
+            "filename":"hat",
+            "imageCaption":"Hats",
+            "actionName":"View Hats"
+        },
+        {
+            "filename":"scarf",
+            "imageCaption":"Accessories",
+            "actionName":"View Accessories"       
+        },
+        {
+            "filename":"backgrounds",
+            "imageCaption":"Backgrounds",
+            "actionName":"View Backgrounds"           
+        },
+        {
+            "filename":"face",
+            "imageCaption":"Character",
+            "actionName":"View Character Options"            
+        },
+        {
+            "filename":"settings",
+            "imageCaption":"Settings",
+            "actionName":"Change Settings"        
+        }
+    ]
+}

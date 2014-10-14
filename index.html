@@ -1,25 +1,109 @@
 <html>
 	<head>
     	<link rel="stylesheet" href="style.css" media="all" />
+    	<script type="text/javascript" src="navigation.json"></script>
 		<script language="Javascript">
 		
 		var timeIntreval = 1500;
-		
-		var images = ["shirt","jacket","pants","shoes","hat","scarf","backgrounds","face","settings"];
-		var actions = ["View Shirts","View Jackets","View Pants","View Shoes","View Hats","View Scarves","View Backgrounds","View Character Options","Change Settings"];
+		var currentItem = 0;
 
+var navigation = {
+    "derp":"derp",
+    "parents":
+    [
+        {
+            "filename":"shirt",
+            "imageCaption":"Shirt",
+            "actionName":"View Shirts",
+            "children":
+            [
+                {
+                    "filename":"shirt",
+                    "imageCaption":"Upright Shirt",
+                    "localion":"Wear Shirt"
+                },
+                {
+                    "filename":"shirt2",
+                    "imageCaption":"Right Shirt",
+                    "localion":"Wear Right Shirt"
+                },
+                {
+                    "filename":"shirt3",
+                    "imageCaption":"upsidedown Shirt",
+                    "localion":"Wear upsidedown Shirt"
+                },
+                {
+                    "filename":"shirt4",
+                    "imageCaption":"Left Shirt",
+                    "localion":"Wear Left Shirt"
+                }
+
+            ]
+        },
+        {
+            "filename":"pants",
+            "imageCaption":"Pants",
+            "actionName":"View Pants"
+        },
+        {
+            "filename":"shoes",
+            "imageCaption":"Shoes",
+            "actionName":"View Shoes"
+        },
+        {
+            "filename":"jacket",
+            "imageCaption":"Jackets",
+            "actionName":"View Jackets"
+        },
+        {
+            "filename":"hat",
+            "imageCaption":"Hats",
+            "actionName":"View Hats"
+        },
+        {
+            "filename":"scarf",
+            "imageCaption":"Accessories",
+            "actionName":"View Accessories"       
+        },
+        {
+            "filename":"backgrounds",
+            "imageCaption":"Backgrounds",
+            "actionName":"View Backgrounds"           
+        },
+        {
+            "filename":"face",
+            "imageCaption":"Character",
+            "actionName":"View Character Options"            
+        },
+        {
+            "filename":"settings",
+            "imageCaption":"Settings",
+            "actionName":"Change Settings"        
+        }
+    ]
+}
+
+	
 		function load() {
+
 			//First item should already be selected
 			document.getElementById("item0").className = "selected";
-			document.getElementById("actionText").innerHTML = actions[0];
+			document.getElementById("actionText").innerHTML = navigation.parents[0].actionName;
 
-			for (var j = 0; j < images.length; j++) { 
+			for (var j = 0; j < 9; j++) { 
 				var label = "item" + j;
-			    document.getElementById(label).innerHTML = "<img src='images/" + images[j] + ".jpg' height='80px'><br/ >" + images[j];
+			    document.getElementById(label).innerHTML = "<img src='images/" + navigation.parents[j].filename + ".jpg' height='80px'><br/ >" + navigation.parents[j].imageCaption;
 			}
 			
 		}
+		
+		window.addEventListener("keydown", dealWithKeyboard, false);
 
+		function dealWithKeyboard(e) {
+			document.getElementById("character").innerHTML = "<img src='images/" + navigation.parents[currentItem].filename + ".jpg' height='80px'>";
+
+		}
+		
 		var i = 0;
 		window.setInterval(function(){
 			var labelOld = "item" + i;
@@ -30,8 +114,9 @@
 			} else {
 				i = i+1;
 			}
-
-			document.getElementById("actionText").innerHTML = actions[i];
+			currentItem = i;
+		
+			document.getElementById("actionText").innerHTML = navigation.parents[i].actionName;
 			var label = "item" + i;
 			document.getElementById(label).className = "selected";
 			
@@ -61,7 +146,7 @@
 			</div>
 		</div>
 		<p class="footer">
-		UNC Chapel Hill, Maegan Clawges, Krista Katzenmeyer, Jon Medenblik
+		UNC Chapel Hill, Maegan Clawges, Krista Katzenmeyer, Jon Medenblik.  <a href="https://github.com/kkatzen/dress-to-the-max">Github</a>
 		</p>
 	</body>
 </html>
