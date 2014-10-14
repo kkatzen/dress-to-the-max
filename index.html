@@ -109,8 +109,13 @@ var navigation = {
             
                 {
                     "filename":"hat",
-                    "imageCaption":"hat",
-                    "actionName":"Wear hat"
+                    "imageCaption":"Sun Hat",
+                    "actionName":"Wear Sun Hat"
+                },
+                {
+                    "filename":"hat2",
+                    "imageCaption":"Red Hat",
+                    "actionName":"Wear Red Hat"
                 }
 			]
         },
@@ -177,7 +182,8 @@ var navigation = {
 		var currentLevel = 0;
 		var currentItem = 0;
 		var currentPage = 0;
-	
+
+
 		function loadHome() {  //Called to display home (level-0) screen
 			
 			clearScreen();
@@ -219,6 +225,9 @@ var navigation = {
 				if(currentItem == navigation.parents[currentPage].children.length){ //ie, the back button
 					currentLevel = 0;
 					loadHome();
+				}else {
+					url = "images/" + navigation.parents[currentPage].filename + "/" + navigation.parents[currentPage].children[currentItem].filename + ".jpg";
+					document.getElementById('image_X').src=url;
 				}
 			}
 		}
@@ -269,10 +278,10 @@ var navigation = {
 		<div id="wrapper">
 			<h1>Dress to the Max</h1>
 			<div id="character">
-				<img src="images/character.jpg" height="400px">
+				<img id="image_X" >
 			</div>
 			<div id="navigation">
-				Action: <span id ="actionText">lakjsdlfkafsd</span>
+				Action: <span id ="actionText"></span>
 				<ul onkeydown="keypress1(event);" id="navlist">
 					<li id="item0" ></li>
 					<li id="item1" ></li>
