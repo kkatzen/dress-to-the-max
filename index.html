@@ -2,23 +2,33 @@
 	<head>
     	<link rel="stylesheet" href="style.css" media="all" />
 		<script language="Javascript">
+		function load() {
+		
+			var images = ["shirt","jacket","pants","shoes","hat","scarf","backgrounds","face","settings"];
+			for (var j = 0; j < images.length; j++) { 
+				var label = "item" + j;
+			    document.getElementById(label).innerHTML = "<img src='" + images[j] + ".jpg' height='80px'><br/ >" + images[j];
+			}
+			
+		}
 
-		var i = 1;
+		var i = 0;
 		window.setInterval(function(){
 			var labelOld = "item" + i;
 			document.getElementById(labelOld).className = "unSelected";
-			if(i == 9){
+			if(i == 8){
 				i = 1;
 			} else {
 				i = i+1;
 			}
 			var label = "item" + i;
 			document.getElementById(label).className = "selected";
+			
 		}, 1000);
 		
 		</script>
 	</head>
-	<body>
+	<body onload="load()">
 		<div id="wrapper">
 			<h1>Dress to the Max</h1>
 			<div id="character">
@@ -26,42 +36,15 @@
 			</div>
 			<div id="navigation">
 				<ul onkeydown="keypress1(event);" id="navlist">
-					<li id="item1" class="selected">
-						<img src="shirt.jpg" height="100px"><br/ >
-						Shirt
-					</li>
-					<li id="item2">
-						<img src="jacket.jpg" height="100px"><br/ >
-						Jacket
-					</li>
-					<li id="item3">
-						<img src="pants.jpg" height="90px"><br/ >
-						Pants
-					</li>
-					<li id="item4">
-						<img src="shoes.jpg" height="86px"><br/ >
-						Shoes
-					</li>
-					<li id="item5">
-						<img src="hat.jpg" height="85px"><br/ >
-						Hats
-					</li>
-					<li id="item6">
-						<img src="scarf.jpg" height="85px"><br/ >
-						Scarf
-					</li>
-					<li id="item7">
-						<img src="backgrounds.jpg" height="100px"><br/ >
-						Shirt
-					</li>
-					<li id="item8">
-						<img src="face.jpg" height="100px"><br/ >
-						Character
-					</li>
-					<li id="item9">
-						<img src="settings.jpg" height="100px"><br/ >
-						Settings
-					</li>
+					<li id="item0" class="selected"></li>
+					<li id="item1" ></li>
+					<li id="item2" ></li>
+					<li id="item3" ></li>
+					<li id="item4" ></li>
+					<li id="item5" ></li>
+					<li id="item6" ></li>
+					<li id="item7" ></li>
+					<li id="item8" ></li>
 				</ul>
 			</div>
 		</div>
