@@ -6,7 +6,7 @@
 
 var navigation = {
     "derp":"derp",
-    "parents":
+    "children":
     [
         {
             "filename":"shirt",
@@ -15,27 +15,27 @@ var navigation = {
             "children":
             [
                 {
-                    "filename":"shirt",
+                    "filename":"shirt/shirt",
                     "imageCaption":"Upright Shirt",
                     "actionName":"Wear Shirt"
                 },
                 {
-                    "filename":"shirt2",
+                    "filename":"shirt/shirt2",
                     "imageCaption":"Right Shirt",
                     "actionName":"Wear Right Shirt"
                 },
                 {
-                    "filename":"shirt3",
+                    "filename":"shirt/shirt3",
                     "imageCaption":"upsidedown Shirt",
                     "actionName":"Wear upsidedown Shirt"
              	},
                 {
-                    "filename":"shirt4",
+                    "filename":"shirt/shirt4",
                     "imageCaption":"Left Shirt",
                     "actionName":"Wear Left Shirt"
                 },
                 {
-                    "filename":"shirt4",
+                    "filename":"shirt/shirt4",
                     "imageCaption":"MORE SHIRT",
                     "actionName":"Wear THE MORE Shirt"
                 }
@@ -50,22 +50,22 @@ var navigation = {
             [
             
                 {
-                    "filename":"pants",
+                    "filename":"pants/pants",
                     "imageCaption":"Upright pants",
                     "actionName":"Wear pants"
                 },
                 {
-                    "filename":"pants2",
+                    "filename":"pants/pants2",
                     "imageCaption":"Right pants",
                     "actionName":"Wear Right pants"
                 },
                 {
-                    "filename":"pants3",
+                    "filename":"pants/pants3",
                     "imageCaption":"upsidedown pants",
                     "actionName":"Wear upsidedown pants"
                 },
                 {
-                    "filename":"pants4",
+                    "filename":"pants/pants4",
                     "imageCaption":"Left pants",
                     "actionName":"Wear Left pants"
                 }
@@ -80,7 +80,7 @@ var navigation = {
             [
             
                 {
-                    "filename":"shoes",
+                    "filename":"shoes/shoes",
                     "imageCaption":"shoes",
                     "actionName":"Wear shoes"
                 }
@@ -94,7 +94,7 @@ var navigation = {
             [
             
                 {
-                    "filename":"jacket",
+                    "filename":"jacket/jacket",
                     "imageCaption":"jacket",
                     "actionName":"Wear jacket"
                 }
@@ -108,12 +108,12 @@ var navigation = {
             [
             
                 {
-                    "filename":"hat",
+                    "filename":"hat/hat",
                     "imageCaption":"Sun Hat",
                     "actionName":"Wear Sun Hat"
                 },
                 {
-                    "filename":"hat2",
+                    "filename":"hat/hat2",
                     "imageCaption":"Red Hat",
                     "actionName":"Wear Red Hat"
                 }
@@ -127,7 +127,7 @@ var navigation = {
             [
             
                 {
-                    "filename":"accessories",
+                    "filename":"accessories/accessories",
                     "imageCaption":"accessories",
                     "actionName":"Wear accessories"
                 }
@@ -142,7 +142,7 @@ var navigation = {
             [
             
                 {
-                    "filename":"backgrounds",
+                    "filename":"backgrounds/backgrounds",
                     "imageCaption":"backgrounds",
                     "actionName":"Wear backgrounds"
                 }
@@ -156,7 +156,7 @@ var navigation = {
             [
             
                 {
-                    "filename":"face",
+                    "filename":"face/face",
                     "imageCaption":"face",
                     "actionName":"Wear face"
                 }
@@ -170,97 +170,139 @@ var navigation = {
             [
             
                 {
-                    "filename":"settings",
-                    "imageCaption":"settings",
-                    "actionName":"Wear settings"
+                    "filename":"settings/clock",
+                    "imageCaption":"Timer",
+                    "actionName":"Change Timer",
+                    "children":
+                    [
+                    	{
+                    		"time":700,
+                 		   "filename":"settings/clock",
+                 		   "imageCaption":"small",
+                 		   "actionName":"S"
+                    	},
+                    	{
+                    		"time":1000,
+                 		   "filename":"settings/clock",
+                 		   "imageCaption":"medium",
+                 		   "actionName":"M"
+                    	},
+                    	{
+                    		"time":1500,
+                 		   "filename":"settings/clock",
+                 		   "imageCaption":"long",
+                 		   "actionName":"long"
+                    	}
+                    ]
+                },
+                {
+                    "filename":"settings/puzzle",
+                    "imageCaption":"Game Mode",
+                    "actionName":"Change game Mode",
+                    "children":
+                    [
+                    	{
+                 		   "filename":"settings/puzzle",
+                 		   "imageCaption":"Freeplay",
+                 		   "actionName":"Use Freeplay Mode"
+                    	},
+                    	{
+                    		"time":1000,
+                 		   "filename":"settings/puzzle",
+                 		   "imageCaption":"Challenge",
+                 		   "actionName":"Use Challenge Mode"
+                    	}
+                    	
+                    ]
                 }
-			]
+            ]
         }
     ]
 }
-		var timeIntreval = 700;
+		var timeIntreval = 400;
 		var currentLevel = 0;
-		var currentItem = 0;
-		var currentPage = 0;
+		var highlightedItem = 0;
+		var currentParent = navigation;
+		var settings = navigation.children[8];
 
-
-		function loadHome() {  //Called to display home (level-0) screen
-			
+		function loadScreen() {
 			clearScreen();
-			document.getElementById("actionText").innerHTML = navigation.parents[0].actionName;
-
+		
 			//Fill in grid with appropriate items
-			for (var j = 0; j < 9; j++) { 
+			for (var j = 0; j < currentParent.children.length; j++) { 
 				var label = "item" + j;
-			    document.getElementById(label).innerHTML = "<img src='images/" + navigation.parents[j].filename + ".jpg' height='80px'><br/ >" + navigation.parents[j].imageCaption;
+			    document.getElementById(label).innerHTML = "<img src='images/" + currentParent.children[j].filename + ".jpg' height='80px'><br/ >" + currentParent.children[j].imageCaption;
+			}
+			
+			//Add back button
+			if(currentLevel > 0){
+				label = "item" + currentParent.children.length;
+				document.getElementById(label).innerHTML = "<img src='images/home.jpg'><br/ >Back";
 			}
 			
 		}
 		
-		function loadScreen() {  //Called to level-1 screens
+		window.setInterval(function(){
+		
+			//unselect previous
+			document.getElementById("item" + highlightedItem).className = "unSelected";
 
-			clearScreen();
-			document.getElementById("actionText").innerHTML = navigation.parents[currentPage].children[0].actionName;
+			//increment which item we're currently selecting
+			highlightedItem = highlightedItem+1;
+			maxLength = currentParent.children.length;
 			
-			//Fill in grid with appropriate items
-			for (var j = 0; j < navigation.parents[currentPage].children.length; j++) { 
-				var label = "item" + j;
-			    document.getElementById(label).innerHTML = "<img src='images/" + navigation.parents[currentPage].filename + "/" + navigation.parents[currentPage].children[j].filename + ".jpg' height='80px'><br/ >" + navigation.parents[currentPage].children[j].imageCaption;
+			if(currentLevel > 0){  //add one for back button if not homescreen
+				maxLength = maxLength +1;  
 			}
 			
-			//Add back button
-			label = "item" + navigation.parents[currentPage].children.length;
-			document.getElementById(label).innerHTML = "<img src='images/home.jpg'><br/ >Back";
+			//end of loop, begin at zero
+			if(highlightedItem == maxLength){
+				highlightedItem = 0;
+			}
+			
+			//add action name
+			if(currentLevel > 0 && highlightedItem == currentParent.children.length){
+				document.getElementById("actionText").innerHTML = "Go back";
+			}else {
+				document.getElementById("actionText").innerHTML = currentParent.children[highlightedItem].actionName;
+			}
+			
+			//highlight current selection 
+			document.getElementById("item" + highlightedItem).className = "selected";
 
-		}
+
+		}, timeIntreval);
 		
 		window.addEventListener("keydown", dealWithKeyboard, false);
 
 		function dealWithKeyboard(e) {
 			if(currentLevel == 0){
 				currentLevel = 1;
-				currentPage = currentItem;
+				currentParent = navigation.children[highlightedItem];
 				loadScreen();
-			}else {
-				if(currentItem == navigation.parents[currentPage].children.length){ //ie, the back button
+			}else if (currentLevel == 1) {
+				if(highlightedItem == currentParent.children.length){ //going back a level
 					currentLevel = 0;
-					loadHome();
-				}else {
-					url = "images/" + navigation.parents[currentPage].filename + "/" + navigation.parents[currentPage].children[currentItem].filename + ".jpg";
+					currentParent = navigation;
+					loadScreen();
+				}else if(currentParent == settings){ //going forward a level within settings
+					currentLevel = 2;
+					currentParent = settings.children[highlightedItem];
+					loadScreen();
+				}else{  //add clothing item to screen
+					url = "images/"+ currentParent.children[highlightedItem].filename + ".jpg";
 					document.getElementById('image_X').src=url;
 				}
-			}
-		}
-		
-		window.setInterval(function(){
-			document.getElementById("item" + currentItem).className = "unSelected";
-			
-			if(currentLevel == 0){	//If on main screen
-				currentItem = currentItem+1;
-				if(currentItem == 9){
-					currentItem = 0;
-				}
-				
-				document.getElementById("actionText").innerHTML = navigation.parents[currentItem].actionName;
-				var label = "item" + currentItem;
-				document.getElementById(label).className = "selected";
-				
-			}else {  //If on subscreen
-				currentItem = currentItem+1;
-				if(currentItem == navigation.parents[currentPage].children.length+1){
-					currentItem = 0;
-				}
-				
-				if(currentItem == navigation.parents[currentPage].children.length){
-					document.getElementById("actionText").innerHTML = "Go back";
+			}else { //NOTE: level 2 currently implies settings is parent
+				if(highlightedItem == currentParent.children.length){ //going back a level
+					currentLevel = 1;
+					currentParent = settings;
+					loadScreen();
 				}else {
-					document.getElementById("actionText").innerHTML = navigation.parents[currentPage].children[currentItem].actionName;
+					//do seomthing to change settings
 				}
-				var label = "item" + currentItem;
-				document.getElementById(label).className = "selected";
 			}
-			
-		}, timeIntreval);
+		}	
 		
 		function clearScreen(){ //Resets grid to a clean slate
 			for (var j = 0; j < 9; j++) { 
@@ -268,13 +310,14 @@ var navigation = {
 			    document.getElementById(label).innerHTML = "";
 				document.getElementById(label).className = "unSelected";
 			}
-			currentItem = 0;
+			highlightedItem = 0;
 			document.getElementById("item0").className = "selected";
+			document.getElementById("actionText").innerHTML = currentParent.children[0].actionName;
 		}
 		
 		</script>
 	</head>
-	<body onload="loadHome()">
+	<body onload="loadScreen()">
 		<div id="wrapper">
 			<h1>Dress to the Max</h1>
 			<div id="character">
