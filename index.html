@@ -224,6 +224,8 @@ var navigation = {
 		var highlightedItem = 0;
 		var currentParent = navigation;
 		var settings = navigation.children[8];
+		var timer = settings.children[0];
+		var mode = settings.children[1];
 
 		function loadScreen() {
 			clearScreen();
@@ -291,7 +293,7 @@ var navigation = {
 					loadScreen();
 				}else{  //add clothing item to screen
 					url = "images/"+ currentParent.children[highlightedItem].filename + ".jpg";
-					document.getElementById('image_X').src=url;
+					document.getElementById(currentParent.filename).src=url;
 				}
 			}else { //NOTE: level 2 currently implies settings is parent
 				if(highlightedItem == currentParent.children.length){ //going back a level
@@ -300,6 +302,10 @@ var navigation = {
 					loadScreen();
 				}else {
 					//do seomthing to change settings
+					if(currentParent == timer){
+						timeIntreval = timer.children[highlightedItem].time;
+						
+					}
 				}
 			}
 		}	
@@ -321,7 +327,15 @@ var navigation = {
 		<div id="wrapper">
 			<h1>Dress to the Max</h1>
 			<div id="character">
-				<img id="image_X" >
+				<img id="hat" >
+				<img id="accessories" >
+				<img id="shirt" >
+				<img id="jacket"  >
+				<img id="pants"  >
+				<img id="shoes" >
+				<img id="backgrounds" >
+				<img id="face"  >
+
 			</div>
 			<div id="navigation">
 				Action: <span id ="actionText"></span>

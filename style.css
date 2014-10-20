@@ -66,8 +66,43 @@ li {
 	background: yellow;
 }
 
-#image_X {
+#hat {
     position: relative;
-    top: 100px;
+    top: 10px;
+    right: 20px;
+}
+#accessories {
+    position: accesories;
+    top: 0px;
+    right: 60px;
+}
+#shirt {
+    position: relative;
+    top: 0px;
+    right: 70px;
+}
+#jacket {
+    position: relative;
+    top: 20px;
+    right: 20px;
+}
+#pants {
+    position: relative;
+    top: 0px;
+    right: 60px;
+}
+#shoes {
+    position: relative;
+    top: 0;
+    right: 60px;
+}
+#background {
+    position: relative;
+    top: 0;
+    right: 90px;
+}
+#face {
+    position: relative;
+    top: 0;
     right: 60px;
 }
