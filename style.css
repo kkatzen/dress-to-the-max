@@ -29,14 +29,27 @@ h1 {
 }
 
 #character {
-	float:left;
 	width: 300px;
-	height: 430px;
+	height: 360px;
 	text-align: center;
 	background: #FFFEFE;
 	padding: 15px;
 	background-image: url('images/character.jpg');
 	background-repeat: no-repeat;
+}
+
+#thoughts {
+	width: 200px;
+	border: 2px solid gray;
+	background-color: white;
+	min-height: 70px;
+	border-radius: 30px;
+	padding: 2px;
+	visibility: hidden;
+}
+
+#leftSide {
+	float: left;
 }
 
 .footer {

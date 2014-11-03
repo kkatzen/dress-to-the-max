@@ -16,28 +16,43 @@ var navigation = {
             [
                 {
                     "filename":"shirt/shirt",
-                    "imageCaption":"Upright Shirt",
-                    "actionName":"Wear Shirt"
+                    "imageCaption":"Fireman Shirt",
+                    "actionName":"Wear Fireman Shirt"
                 },
                 {
-                    "filename":"shirt/shirt2",
-                    "imageCaption":"Right Shirt",
-                    "actionName":"Wear Right Shirt"
+                    "filename":"shirt/labcoat",
+                    "imageCaption":"Lab Coat",
+                    "actionName":"Wear Lab Coat"
                 },
                 {
                     "filename":"shirt/shirt3",
-                    "imageCaption":"upsidedown Shirt",
-                    "actionName":"Wear upsidedown Shirt"
+                    "imageCaption":"Jersey",
+                    "actionName":"Wear Jersey"
              	},
                 {
                     "filename":"shirt/shirt4",
-                    "imageCaption":"Left Shirt",
-                    "actionName":"Wear Left Shirt"
+                    "imageCaption":"Raincoat",
+                    "actionName":"Wear Raincoat"
                 },
                 {
                     "filename":"shirt/shirt4",
-                    "imageCaption":"MORE SHIRT",
-                    "actionName":"Wear THE MORE Shirt"
+                    "imageCaption":"Sweater",
+                    "actionName":"Wear Sweater"
+                },
+                {
+                    "filename":"shirt/shirt4",
+                    "imageCaption":"Tee Shirt",
+                    "actionName":"Wear Tee Shirt"
+                },
+                {
+                    "filename":"shirt/shirt4",
+                    "imageCaption":"Pajamas",
+                    "actionName":"Wear Pajamas"
+                },
+                {
+                    "filename":"shirt/shirt4",
+                    "imageCaption":"Hoodie",
+                    "actionName":"Wear Hoodie"
                 }
 
             ]
@@ -51,25 +66,44 @@ var navigation = {
             
                 {
                     "filename":"pants/pants",
-                    "imageCaption":"Upright pants",
-                    "actionName":"Wear pants"
+                    "imageCaption":"Jeans",
+                    "actionName":"Wear Jeans"
                 },
                 {
                     "filename":"pants/pants2",
-                    "imageCaption":"Right pants",
-                    "actionName":"Wear Right pants"
+                    "imageCaption":"Shorts",
+                    "actionName":"Wear Shorts"
                 },
                 {
                     "filename":"pants/pants3",
-                    "imageCaption":"upsidedown pants",
-                    "actionName":"Wear upsidedown pants"
+                    "imageCaption":"Yoga Pants",
+                    "actionName":"Wear Yoga Pants"
+                },
+                {
+                    "filename":"pants/scrubs",
+                    "imageCaption":"Scrubs",
+                    "actionName":"Wear Scrubs"
                 },
                 {
                     "filename":"pants/pants4",
-                    "imageCaption":"Left pants",
-                    "actionName":"Wear Left pants"
-                }
-
+                    "imageCaption":"Skirt",
+                    "actionName":"Wear Skirt"
+                },
+                {
+                    "filename":"pants/pants4",
+                    "imageCaption":"Pajamas",
+                    "actionName":"Wear Pajamas"
+                },
+                {
+                    "filename":"pants/pants4",
+                    "imageCaption":"Fireman Pants",
+                    "actionName":"Wear Fireman Pants"
+                },
+                {
+                    "filename":"pants/pants4",
+                    "imageCaption":"Kilt",
+                    "actionName":"Wear Kilt"
+                }            
             ]
         },
         {
@@ -219,13 +253,43 @@ var navigation = {
         }
     ]
 }
+var challenges = {
+    "children":
+    [
+        {
+            "challenge":"Dress Max in the first pants and shirt!",
+            "question":"Do you think you've dressed Max like I asked, trick??"
+        },
+        {
+            "challenge":"Dress Max in the red hat!",
+            "question":"This isn't a red hat!"
+        }
+    ]
+}
+
 		var timeIntreval = 400;
 		var currentLevel = 0;
 		var highlightedItem = 0;
 		var currentParent = navigation;
 		var settings = navigation.children[8];
 		var timer = settings.children[0];
-		var mode = settings.children[1];
+		var challengeMode = true;
+
+        var currentClothes = [];
+
+        //zero based indexing
+        var cDoctor = []
+            cDoctor["shirt"] = 1;
+            cDoctor["pants"] = 3;
+            cDoctor["positiveFeedback"] = "I totally think a Doctor would wear this!";
+            cDoctor["negativeFeedback"] = "I'm not sure a Doctor would wear this?";
+
+        var cRedHat = []
+            cRedHat["hat"] = 1;
+            cRedHat["positiveFeedback"] = "Yes a red hat";
+            cRedHat["negativeFeedback"] = "is this the most red hat?";
+
+        var currentChallenge = cDoctor;
 
 		function loadScreen() {
 			clearScreen();
@@ -243,7 +307,16 @@ var navigation = {
 			}
 			
 		}
-		
+
+        function showPopup(text) {
+            document.getElementById("thoughts").innerHTML = text;
+            document.getElementById("thoughts").style.visibility="visible";
+            window.setTimeout(hidePopup,1000)
+        }
+        function hidePopup() {
+            document.getElementById("thoughts").style.visibility="hidden";
+        }
+
 		window.setInterval(function(){
 		
 			//unselect previous
@@ -294,6 +367,17 @@ var navigation = {
 				}else{  //add clothing item to screen
 					url = "images/"+ currentParent.children[highlightedItem].filename + ".jpg";
 					document.getElementById(currentParent.filename).src=url;
+                    //currentClothes.push(currentParent.children[highlightedItem]);
+                    currentClothes[currentParent.filename] = highlightedItem;
+                    if(challengeMode==true){
+                        if (typeof currentChallenge[currentParent.filename] != 'undefined') {
+                            var message = currentChallenge["negativeFeedback"];
+                            if(currentChallenge[currentParent.filename] == highlightedItem){
+                                message = currentChallenge["positiveFeedback"];
+                            }
+                            showPopup(message);
+                        }
+                    }
 				}
 			}else { //NOTE: level 2 currently implies settings is parent
 				if(highlightedItem == currentParent.children.length){ //going back a level
@@ -326,17 +410,20 @@ var navigation = {
 	<body onload="loadScreen()">
 		<div id="wrapper">
 			<h1>Dress to the Max</h1>
-			<div id="character">
-				<img id="hat" >
-				<img id="accessories" >
-				<img id="shirt" >
-				<img id="jacket"  >
-				<img id="pants"  >
-				<img id="shoes" >
-				<img id="backgrounds" >
-				<img id="face"  >
-
-			</div>
+            <div id="leftSide">
+                <div id ="thoughts">
+                </div>
+    			<div id="character">
+    				<img id="hat" >
+    				<img id="accessories" >
+    				<img id="shirt" >
+    				<img id="jacket"  >
+    				<img id="pants"  >
+    				<img id="shoes" >
+    				<img id="backgrounds" >
+    				<img id="face"  >
+    			</div>
+            </div>
 			<div id="navigation">
 				Action: <span id ="actionText"></span>
 				<ul onkeydown="keypress1(event);" id="navlist">
