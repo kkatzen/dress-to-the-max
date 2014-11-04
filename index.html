@@ -253,6 +253,33 @@ var navigation = {
         }
     ]
 }
+
+var challenges = {
+    "derp":"derp",
+    "children":
+    [
+        {
+            "challenge prompt":"Dress Max like a Doctor",
+            "positiveFeedback":"Perfect!",
+            "negativeFeedback":"Is this what a Doctor would wear?",
+            "children":
+                {
+                    "shirt":1,
+                    "pants":3
+                }
+        },
+        {
+            "challenge prompt":"Dress Max like a Fireman",
+            "positiveFeedback":"Get at me fires!",
+            "negativeFeedback":"Is this what a Fireman would wear?",
+            "children":
+                {
+                    "hat":1
+                }
+        }
+    ]
+}
+
 		var timeIntreval = 400;
 		var currentLevel = 0;
 		var highlightedItem = 0;
@@ -263,22 +290,9 @@ var navigation = {
 
         var currentClothes = {};
 
-        var cDoctor = {};
-            cDoctor["shirt"] = 1;
-            cDoctor["pants"] = 3;
-        var doctorGoodFeedback = "Doctor would wear this";
-        var doctorBadFeedback = "Docto rwoudln't waear this stupid";
-
-        var cRedHat = []
-            cRedHat["hat"] = 1;
-            cRedHat["positiveFeedback"] = "Yes a red hat";
-            cRedHat["negativeFeedback"] = "is this the most red hat?";
-
-        var currentChallenge = cDoctor;
-        var challengeGoodFeedback = doctorGoodFeedback
-        var challengeBadFeedback = doctorBadFeedback
-        var doctorGoodFeedback = "Doctor would wear this";
-        var doctorBadFeedback = "Docto rwoudln't waear this stupid";
+        var currentChallenge = challenges.children[1];
+        var challengeGoodFeedback = currentChallenge.positiveFeedback;
+        var challengeBadFeedback = currentChallenge.negativeFeedback;
 
 		function loadScreen() {
 			clearScreen();
@@ -378,13 +392,15 @@ var navigation = {
 		}	
 
         function giveChallengeFeedback(){
-            if (typeof currentChallenge[currentParent.filename] != 'undefined') {
+            if (typeof currentChallenge.children[currentParent.filename] != 'undefined') {
+
                 var message = challengeBadFeedback;
-                if(currentChallenge[currentParent.filename] == highlightedItem){
+                if(currentChallenge.children[currentParent.filename] == highlightedItem){
                     message = challengeGoodFeedback;
                 }
                 showPopup(message);
             }
+
             if(checkChallengeStatus() == true){
                 alert("challenge completed!");
             }
@@ -397,16 +413,15 @@ var navigation = {
                 val;
 
             //If any of the required items is not current worn, it cannot be complete
-            for (val in currentChallenge) {
-                if (currentChallenge.hasOwnProperty(val)) {
-                    if(currentClothes[val] != currentChallenge[val]){
+            for (val in currentChallenge.children) {
+                if (currentChallenge.children.hasOwnProperty(val)) {
+                    output += "" + val + " : " + currentChallenge.children[val];
+                    output += "\n";
+                    if(currentClothes[val] != currentChallenge.children[val]){
                         complete = false;
                     }
-                    output += "" + val + " : " + currentChallenge[val];
-                    output += "\n";
                 }
             }
-
             return complete;
         }
 		
