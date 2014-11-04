@@ -253,20 +253,6 @@ var navigation = {
         }
     ]
 }
-var challenges = {
-    "children":
-    [
-        {
-            "challenge":"Dress Max in the first pants and shirt!",
-            "question":"Do you think you've dressed Max like I asked, trick??"
-        },
-        {
-            "challenge":"Dress Max in the red hat!",
-            "question":"This isn't a red hat!"
-        }
-    ]
-}
-
 		var timeIntreval = 400;
 		var currentLevel = 0;
 		var highlightedItem = 0;
@@ -275,14 +261,13 @@ var challenges = {
 		var timer = settings.children[0];
 		var challengeMode = true;
 
-        var currentClothes = [];
+        var currentClothes = {};
 
-        //zero based indexing
-        var cDoctor = []
+        var cDoctor = {};
             cDoctor["shirt"] = 1;
             cDoctor["pants"] = 3;
-            cDoctor["positiveFeedback"] = "I totally think a Doctor would wear this!";
-            cDoctor["negativeFeedback"] = "I'm not sure a Doctor would wear this?";
+        var doctorGoodFeedback = "Doctor would wear this";
+        var doctorBadFeedback = "Docto rwoudln't waear this stupid";
 
         var cRedHat = []
             cRedHat["hat"] = 1;
@@ -290,6 +275,10 @@ var challenges = {
             cRedHat["negativeFeedback"] = "is this the most red hat?";
 
         var currentChallenge = cDoctor;
+        var challengeGoodFeedback = doctorGoodFeedback
+        var challengeBadFeedback = doctorBadFeedback
+        var doctorGoodFeedback = "Doctor would wear this";
+        var doctorBadFeedback = "Docto rwoudln't waear this stupid";
 
 		function loadScreen() {
 			clearScreen();
@@ -367,16 +356,10 @@ var challenges = {
 				}else{  //add clothing item to screen
 					url = "images/"+ currentParent.children[highlightedItem].filename + ".jpg";
 					document.getElementById(currentParent.filename).src=url;
-                    //currentClothes.push(currentParent.children[highlightedItem]);
                     currentClothes[currentParent.filename] = highlightedItem;
+
                     if(challengeMode==true){
-                        if (typeof currentChallenge[currentParent.filename] != 'undefined') {
-                            var message = currentChallenge["negativeFeedback"];
-                            if(currentChallenge[currentParent.filename] == highlightedItem){
-                                message = currentChallenge["positiveFeedback"];
-                            }
-                            showPopup(message);
-                        }
+                        giveChallengeFeedback(highlightedItem);
                     }
 				}
 			}else { //NOTE: level 2 currently implies settings is parent
@@ -393,6 +376,39 @@ var challenges = {
 				}
 			}
 		}	
+
+        function giveChallengeFeedback(){
+            if (typeof currentChallenge[currentParent.filename] != 'undefined') {
+                var message = challengeBadFeedback;
+                if(currentChallenge[currentParent.filename] == highlightedItem){
+                    message = challengeGoodFeedback;
+                }
+                showPopup(message);
+            }
+            if(checkChallengeStatus() == true){
+                alert("challenge completed!");
+            }
+        }
+
+        function checkChallengeStatus(){
+            var complete = true;
+            var index;
+            var output = '', // initialise as string
+                val;
+
+            //If any of the required items is not current worn, it cannot be complete
+            for (val in currentChallenge) {
+                if (currentChallenge.hasOwnProperty(val)) {
+                    if(currentClothes[val] != currentChallenge[val]){
+                        complete = false;
+                    }
+                    output += "" + val + " : " + currentChallenge[val];
+                    output += "\n";
+                }
+            }
+
+            return complete;
+        }
 		
 		function clearScreen(){ //Resets grid to a clean slate
 			for (var j = 0; j < 9; j++) { 
@@ -425,6 +441,8 @@ var challenges = {
     			</div>
             </div>
 			<div id="navigation">
+                <div id ="challenge">
+                </div>
 				Action: <span id ="actionText"></span>
 				<ul onkeydown="keypress1(event);" id="navlist">
 					<li id="item0" ></li>
