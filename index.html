@@ -308,7 +308,9 @@ var challenges = {
 		var timer = settings.children[0];
 
         //Challenge Variables
+        var firstChallenge = false;
         var challengeComplete = false;
+        var promptOpen = false;
         var currentClothes = {};
         var challengeIterator = 0;
         var numberOfChallenges = challenges.children.length;
@@ -328,6 +330,10 @@ var challenges = {
                     document.getElementById("item9").innerHTML = currentChallenge["challengePrompt"];
                 }else{
                     document.getElementById("item9").innerHTML = "Next Challenge";
+                }
+                if(firstChallenge == false){
+                    showPrompt(currentChallenge.challengePrompt);
+                    firstChallenge = true;
                 }
             }
 
@@ -350,15 +356,32 @@ var challenges = {
             document.getElementById("thoughts").style.visibility="visible";
             window.setTimeout(function(){hideDiv("thoughts")},1000)
         }
+
         function hideDiv(parameter) {
             document.getElementById(parameter).style.visibility="hidden";
             if(parameter == "settings"){
                 loadScreen();
+            }else if(parameter == "prompt"){
+                promptOpen = false;
+                loadScreen();
             }
         }
 
+        function showPrompt(text) {
+            promptOpen = true;
+            for (var j = 0; j < 10; j++) { 
+                var label = "item" + j;
+                document.getElementById(label).className = "unSelected";
+            }
+            if(clickMode == false){
+                document.getElementById("promptButton").className = "selected";
+            }
+            document.getElementById("promptText").innerHTML = text;
+            document.getElementById("prompt").style.visibility="visible";
+        }
+
         window.setInterval(function(){
-            if(twoSwitch == false && clickMode == false){
+            if(twoSwitch == false && clickMode == false && promptOpen == false){
                 iterate();
             }
         }, timeIntreval);
@@ -402,28 +425,37 @@ var challenges = {
         function proceedToNextChallenge() {
             challengeIterator = challengeIterator + 1;
             if(numberOfChallenges <= challengeIterator){
-                alert("All challenges completed! Refresh page to play again.");
+                showPrompt("All challenges completed! Refresh page to play again.");
             }
             currentChallenge = challenges.children[challengeIterator];
             challengeGoodFeedback = currentChallenge.positiveFeedback;
             challengeBadFeedback = currentChallenge.negativeFeedback;
             challengeComplete = false;
+        
         }
 
         function dealWithKeyboard(e){
             //alert(e.keyCode);
             if(clickMode == false){
-                if(e.keyCode==13 || twoSwitch == false){
-                    selectionMade(highlightedItem);
+                if(promptOpen == true){
+                    hideDiv('prompt');
                 }else {
-                    iterate();
+                    if(e.keyCode==13 || twoSwitch == false){
+                        selectionMade(highlightedItem);
+                    }else {
+                        iterate();
+                    }
                 }
             }
         }
 
         function itemClick(i){
             if(clickMode == true){
-                selectionMade(i);
+                if(i == "prompt"){
+                    hideDiv("prompt");
+                }else {
+                    selectionMade(i);
+                }
             }
         }
 
@@ -431,6 +463,7 @@ var challenges = {
             if(selectedItem == 9){ //Next Challenge
                 proceedToNextChallenge();
                 loadScreen();
+                showPrompt(currentChallenge.challengePrompt);
             }
 			else if(currentLevel == 0){
 				currentLevel = 1;
@@ -578,6 +611,11 @@ var challenges = {
             </div>
 			<h1>Dress to the Max</h1>
             <div id ="prompt">
+                <span id="promptText"></span>
+                <ul>
+                    <li id="promptButton" onclick="itemClick('prompt')">OK
+                    </li>
+                </ul>
             </div>
             <div id="leftSide">
                 <div id ="thoughts">
