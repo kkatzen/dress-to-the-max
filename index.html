@@ -294,18 +294,21 @@ var challenges = {
 
     ]
 }
+        //Settings Variables
+        var clickMode = false;
+        var timeIntreval = 400;
+        var challengeMode = true;
 
-		var timeIntreval = 400;
+        //Navigation Variables
 		var currentLevel = 0;
 		var highlightedItem = 0;
 		var currentParent = navigation;
 		var settings = navigation.children[8];
 		var timer = settings.children[0];
-		var challengeMode = true;
+
+        //Challenge Variables
         var challengeComplete = false;
-
         var currentClothes = {};
-
         var challengeIterator = 0;
         var numberOfChallenges = challenges.children.length;
         var currentChallenge = challenges.children[challengeIterator];
@@ -314,6 +317,9 @@ var challenges = {
 
 		function loadScreen() {
 			clearScreen();
+            if(clickMode == true){
+                document.getElementById("actionBar").style.visibility="hidden";
+            }
 		
             if(challengeMode == true){
                 document.getElementById("item9").style.visibility="visible";
@@ -348,6 +354,9 @@ var challenges = {
         }
 
 		window.setInterval(function(){
+            if(clickMode == true){
+                exit;  //this creates console errors!!
+            }
 		
 			//unselect previous
 			document.getElementById("item" + highlightedItem).className = "unSelected";
@@ -395,31 +404,43 @@ var challenges = {
             challengeComplete = false;
         }
 
-		function dealWithKeyboard(e) {
-            if(highlightedItem == 9){ //Next Challenge
+        function dealWithKeyboard(e){
+            if(clickMode == false){
+                selectionMade(highlightedItem);
+            }
+        }
+
+        function itemClick(i){
+            if(clickMode == true){
+                selectionMade(i);
+            }
+        }
+
+		function selectionMade(selectedItem) {
+            if(selectedItem == 9){ //Next Challenge
                 proceedToNextChallenge();
                 loadScreen();
             }
 			else if(currentLevel == 0){
 				currentLevel = 1;
-				currentParent = navigation.children[highlightedItem];
+				currentParent = navigation.children[selectedItem];
 				loadScreen();
 			}else if (currentLevel == 1) {
-				if(highlightedItem == currentParent.children.length){ //going back a level
+				if(selectedItem == currentParent.children.length){ //going back a level
 					currentLevel = 0;
 					currentParent = navigation;
 					loadScreen();
 				}else if(currentParent == settings){ //going forward a level within settings
 					currentLevel = 2;
-					currentParent = settings.children[highlightedItem];
+					currentParent = settings.children[selectedItem];
 					loadScreen();
 				}else{  //add clothing item to screen
-					url = "images/"+ currentParent.children[highlightedItem].filename + ".jpg";
+					url = "images/"+ currentParent.children[selectedItem].filename + ".jpg";
 					document.getElementById(currentParent.filename).src=url;
-                    currentClothes[currentParent.filename] = highlightedItem;
+                    currentClothes[currentParent.filename] = selectedItem;
 
                     if(challengeMode==true & challengeComplete==false){
-                        giveChallengeFeedback(highlightedItem);
+                        giveChallengeFeedback(selectedItem);
                     }
 				}
 			}else { //NOTE: level 2 currently implies settings is parent
@@ -430,19 +451,19 @@ var challenges = {
 				}else {
 					//do seomthing to change settings
 					if(currentParent == timer){
-						timeIntreval = timer.children[highlightedItem].time;
+						timeIntreval = timer.children[selectedItem].time;
 						
 					}
 				}
 			}
 		}	
 
-        function giveChallengeFeedback(){
+        function giveChallengeFeedback(selectedItem){
             if (typeof currentChallenge.children[currentParent.filename] != 'undefined') {
 
                 var message = challengeBadFeedback;
                 var acceptableItems = currentChallenge.children[currentParent.filename];
-                var isAcceptable = (acceptableItems.indexOf(highlightedItem) > -1);
+                var isAcceptable = (acceptableItems.indexOf(selectedItem) > -1);
 
                 if(isAcceptable){
                     message = challengeGoodFeedback;
@@ -487,10 +508,12 @@ var challenges = {
 			    document.getElementById(label).innerHTML = "";
 				document.getElementById(label).className = "unSelected";
 			}
-			highlightedItem = 0;
-			document.getElementById("item0").className = "selected";
-			document.getElementById("actionText").innerHTML = currentParent.children[0].actionName;
-		}
+            if(clickMode == false){
+    			highlightedItem = 0;
+    			document.getElementById("item0").className = "selected";
+    			document.getElementById("actionText").innerHTML = currentParent.children[0].actionName;
+		    }
+        }
 		
 		</script>
 	</head>
@@ -514,18 +537,20 @@ var challenges = {
 			<div id="navigation">
                 <div id ="challenge">
                 </div>
-				Action: <span id ="actionText"></span>
+                <div id="actionBar">
+				    Action: <span id ="actionText"></span>
+                </div>
 				<ul onkeydown="keypress1(event);" id="navlist">
-					<li id="item0" ></li>
-					<li id="item1" ></li>
-					<li id="item2" ></li>
-					<li id="item3" ></li>
-					<li id="item4" ></li>
-					<li id="item5" ></li>
-					<li id="item6" ></li>
-					<li id="item7" ></li>
-					<li id="item8" ></li>
-                    <li id="item9" ></li>
+					<li id="item0" onclick="itemClick(0)"></li>
+                    <li id="item1" onclick="itemClick(1)"></li>
+                    <li id="item2" onclick="itemClick(2)"></li>
+                    <li id="item3" onclick="itemClick(3)"></li>
+                    <li id="item4" onclick="itemClick(4)"></li>
+                    <li id="item5" onclick="itemClick(5)"></li>
+                    <li id="item6" onclick="itemClick(6)"></li>
+                    <li id="item7" onclick="itemClick(7)"></li>
+                    <li id="item8" onclick="itemClick(8)"></li>
+                    <li id="item9" onclick="itemClick(9)"></li>
 				</ul>
 			</div>
 		</div>
