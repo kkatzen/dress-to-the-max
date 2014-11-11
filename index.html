@@ -295,10 +295,10 @@ var challenges = {
     ]
 }
         //Settings Variables
-        var clickMode = false;  //dominate: if true, twoswitch boolean essentially false
-        var twoSwitch = true;
+        var clickMode = true;  //dominate: if true, twoswitch boolean essentially false
+        var twoSwitch = false;
         var timeIntreval = 400;
-        var challengeMode = true;
+        var challengeMode = false;
 
         //Navigation Variables
 		var currentLevel = 0;
@@ -348,10 +348,13 @@ var challenges = {
         function showThought(text) {
             document.getElementById("thoughts").innerHTML = text;
             document.getElementById("thoughts").style.visibility="visible";
-            window.setTimeout(hideThought,1000)
+            window.setTimeout(function(){hideDiv("thoughts")},1000)
         }
-        function hideThought() {
-            document.getElementById("thoughts").style.visibility="hidden";
+        function hideDiv(parameter) {
+            document.getElementById(parameter).style.visibility="hidden";
+            if(parameter == "settings"){
+                loadScreen();
+            }
         }
 
         window.setInterval(function(){
@@ -392,7 +395,6 @@ var challenges = {
 			//highlight current selection 
 			document.getElementById("item" + highlightedItem).className = "selected";
 
-
 		}
 		
 		window.addEventListener("keydown", dealWithKeyboard, false);
@@ -410,13 +412,12 @@ var challenges = {
 
         function dealWithKeyboard(e){
             //alert(e.keyCode);
-            if(clickMode == false){
+            if(clickMode == false && twoSwitch == true){
                 if(e.keyCode==13){
                     selectionMade(highlightedItem);
                 }else {
                     iterate();
                 }
-
             }
         }
 
@@ -524,12 +525,40 @@ var challenges = {
     			document.getElementById("actionText").innerHTML = currentParent.children[0].actionName;
 		    }
         }
-		
+
+        function gameMode(parameter){
+            if(parameter == "twoswitch" ){
+                twoSwitch = true;
+                clickMode = false;
+            }else if(parameter == "oneswitch" ){
+                twoSwitch = false;
+                clickMode = false;
+            }else if(parameter == "freeplay" ){
+                challengeMode = false;
+            }else if(parameter == "challenge" ){
+                challengeMode = true;
+            }else if(parameter = "click"){
+                clickMode = true;
+            }
+        }
+
 		</script>
 	</head>
 	<body onload="loadScreen()">
 		<div id="wrapper">
+            <div id ="settings">
+                Interaction Style<br />
+                <button onclick="gameMode('oneswitch')">One Switch</button><br />
+                <button onclick="gameMode('twoswitch')">Two Switch</button><br />
+                <button onclick="gameMode('click')">Click</button><br /><br />
+                Challenge v Freeplay<br />
+                <button onclick="gameMode('freeplay')">Freeplay</button><br />
+                <button onclick="gameMode('challenge')">Challenge</button><br /><br />
+                <button onclick="hideDiv('settings')">Done</button>
+            </div>
 			<h1>Dress to the Max</h1>
+            <div id ="prompt">
+            </div>
             <div id="leftSide">
                 <div id ="thoughts">
                 </div>
@@ -545,8 +574,6 @@ var challenges = {
     			</div>
             </div>
 			<div id="navigation">
-                <div id ="challenge">
-                </div>
                 <div id="actionBar">
 				    Action: <span id ="actionText"></span>
                 </div>
