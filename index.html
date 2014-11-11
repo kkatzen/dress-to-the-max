@@ -295,7 +295,8 @@ var challenges = {
     ]
 }
         //Settings Variables
-        var clickMode = false;
+        var clickMode = false;  //dominate: if true, twoswitch boolean essentially false
+        var twoSwitch = true;
         var timeIntreval = 400;
         var challengeMode = true;
 
@@ -353,10 +354,13 @@ var challenges = {
             document.getElementById("thoughts").style.visibility="hidden";
         }
 
-		window.setInterval(function(){
-            if(clickMode == true){
-                exit;  //this creates console errors!!
+        window.setInterval(function(){
+            if(twoSwitch == false && clickMode == false){
+                iterate();
             }
+        }, timeIntreval);
+
+		function iterate(){
 		
 			//unselect previous
 			document.getElementById("item" + highlightedItem).className = "unSelected";
@@ -389,7 +393,7 @@ var challenges = {
 			document.getElementById("item" + highlightedItem).className = "selected";
 
 
-		}, timeIntreval);
+		}
 		
 		window.addEventListener("keydown", dealWithKeyboard, false);
 
@@ -405,8 +409,14 @@ var challenges = {
         }
 
         function dealWithKeyboard(e){
+            //alert(e.keyCode);
             if(clickMode == false){
-                selectionMade(highlightedItem);
+                if(e.keyCode==13){
+                    selectionMade(highlightedItem);
+                }else {
+                    iterate();
+                }
+
             }
         }
 
