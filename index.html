@@ -412,8 +412,8 @@ var challenges = {
 
         function dealWithKeyboard(e){
             //alert(e.keyCode);
-            if(clickMode == false && twoSwitch == true){
-                if(e.keyCode==13){
+            if(clickMode == false){
+                if(e.keyCode==13 || twoSwitch == false){
                     selectionMade(highlightedItem);
                 }else {
                     iterate();
