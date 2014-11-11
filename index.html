@@ -162,8 +162,13 @@ var navigation = {
             
                 {
                     "filename":"accessories/accessories",
-                    "imageCaption":"accessories",
-                    "actionName":"Wear accessories"
+                    "imageCaption":"Scarf",
+                    "actionName":"Wear Scarf"
+                },
+                {
+                    "filename":"face/face",
+                    "imageCaption":"face",
+                    "actionName":"Wear Face"
                 }
 			]
 
@@ -264,8 +269,8 @@ var challenges = {
             "negativeFeedback":"Is this what a Doctor would wear?",
             "children":
                 {
-              //      "shirt":1,
-                    "pants":3
+                    "shirt":[1,4],
+                    "pants":[3]
                 }
         },
         {
@@ -274,9 +279,19 @@ var challenges = {
             "negativeFeedback":"Is this what a Fireman would wear?",
             "children":
                 {
-                    "hat":1
+                    "hat":[1]
+                }
+        },
+        {
+            "challengePrompt":"Wear a scarf! its cold yo",
+            "positiveFeedback":"Yay so warm now!",
+            "negativeFeedback":"Hurry I'm freezing to death!!!",
+            "children":
+                {
+                    "accessories":[0]
                 }
         }
+
     ]
 }
 
@@ -323,12 +338,12 @@ var challenges = {
 			
 		}
 
-        function showPopup(text) {
+        function showThought(text) {
             document.getElementById("thoughts").innerHTML = text;
             document.getElementById("thoughts").style.visibility="visible";
-            window.setTimeout(hidePopup,1000)
+            window.setTimeout(hideThought,1000)
         }
-        function hidePopup() {
+        function hideThought() {
             document.getElementById("thoughts").style.visibility="hidden";
         }
 
@@ -426,10 +441,14 @@ var challenges = {
             if (typeof currentChallenge.children[currentParent.filename] != 'undefined') {
 
                 var message = challengeBadFeedback;
-                if(currentChallenge.children[currentParent.filename] == highlightedItem){
+                var acceptableItems = currentChallenge.children[currentParent.filename];
+                var isAcceptable = (acceptableItems.indexOf(highlightedItem) > -1);
+
+                if(isAcceptable){
                     message = challengeGoodFeedback;
                 }
-                showPopup(message);
+                showThought(message);
+
             }
 
             if(checkChallengeStatus() == true){
