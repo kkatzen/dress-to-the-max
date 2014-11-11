@@ -30,12 +30,12 @@ h1, h2, h3 {
 
 #character {
 	width: 300px;
-	height: 420px;
+	height: 450px;
 	text-align: center;
-	background: #FFFEFE;
 	padding: 15px;
-	background-image: url('images/character.jpg');
+	/*background-image: url('images/body-1.png');*/
 	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 #thoughts {
@@ -46,6 +46,7 @@ h1, h2, h3 {
 	border-radius: 30px;
 	padding: 2px;
 	visibility: hidden;
+	position: relative;
 }
 
 #prompt
@@ -63,6 +64,19 @@ h1, h2, h3 {
 	box-shadow: 0px 0px 10px #888888;
 	visibility: hidden;
 	z-index: 1000;
+	text-align:center;
+	padding-top: 80px;
+}
+
+#promptButton {
+	width: 120px;
+	height: 40px;
+	border: 1px solid #705E60;
+	list-style-type: none;
+	text-align: center;
+	padding-top: 10px;
+	padding: 2px;
+	margin: auto;
 }
 
 #settings
@@ -78,6 +92,7 @@ h1, h2, h3 {
 	height: 535px;
 	box-shadow: 0px 0px 10px #888888;
 	text-align: center;
+	z-index: 100;
 }
 button {
 	padding: 10px;
@@ -85,6 +100,8 @@ button {
 }
 #leftSide {
 	float: left;
+	   position: relative;
+
 }
 
 .footer {
@@ -121,42 +138,52 @@ li {
 }
 
 #hat {
-    position: relative;
-    top: 10px;
-    right: 20px;
+    position: absolute;
+    top: 0;
+    right: 0px;
 }
 #accessories {
-    position: accesories;
-    top: 0px;
-    right: 60px;
+    position: absolute;
+    top: 0;
+    right: 0px;
 }
 #shirt {
-    position: relative;
-    top: 0px;
-    right: 70px;
+    position: absolute;
+    top: 0;
+    right: 0px;
 }
 #jacket {
-    position: relative;
-    top: 20px;
-    right: 20px;
+    position: absolute;
+    top: 0;
+    right: 0px;
 }
 #pants {
-    position: relative;
-    top: 0px;
-    right: 60px;
+    position: absolute;
+    top: 0;
+    right: 0px;
 }
 #shoes {
-    position: relative;
+    position: absolute;
     top: 0;
-    right: 60px;
+    right: 0px;
 }
 #background {
-    position: relative;
+    position: absolute;
     top: 0;
-    right: 90px;
+    right: 0px;
+    z-index: 5;
 }
-#face {
-    position: relative;
+#hair {
+    position: absolute;
     top: 0;
-    right: 60px;
+    right: 0px;
+    width: 100%;
+    z-index: 20;
+}
+#body {
+    position: absolute;
+    top: 0;
+    right: 0px;
+    width: 100%;
+    z-index: 10;
 }
