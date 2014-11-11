@@ -471,7 +471,9 @@ var challenges = {
                 if (currentChallenge.children.hasOwnProperty(val)) {
                     output += "" + val + " : " + currentChallenge.children[val];
                     output += "\n";
-                    if(currentClothes[val] != currentChallenge.children[val]){
+                    var acceptableItems = currentChallenge.children[val];
+                    var isAcceptable = (acceptableItems.indexOf(currentClothes[val]) > -1);
+                    if(!isAcceptable){
                         complete = false;
                     }
                 }
