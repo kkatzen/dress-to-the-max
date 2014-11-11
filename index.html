@@ -526,19 +526,34 @@ var challenges = {
 		    }
         }
 
-        function gameMode(parameter){
+        function interactionMode(parameter){
+            document.getElementById("interaction0").className = "unSelected";
+            document.getElementById("interaction1").className = "unSelected";
+            document.getElementById("interaction2").className = "unSelected";
+
             if(parameter == "twoswitch" ){
                 twoSwitch = true;
                 clickMode = false;
+                document.getElementById("interaction2").className = "selected";
             }else if(parameter == "oneswitch" ){
                 twoSwitch = false;
                 clickMode = false;
-            }else if(parameter == "freeplay" ){
-                challengeMode = false;
-            }else if(parameter == "challenge" ){
-                challengeMode = true;
+                document.getElementById("interaction1").className = "selected";
             }else if(parameter = "click"){
                 clickMode = true;
+                document.getElementById("interaction0").className = "selected";
+            }
+        }
+        function gameMode(parameter){
+            document.getElementById("gameMode0").className = "unSelected";
+            document.getElementById("gameMode1").className = "unSelected";
+
+            if(parameter == "freeplay" ){
+                challengeMode = false;
+                document.getElementById("gameMode0").className = "selected";
+            }else if(parameter == "challenge" ){
+                challengeMode = true;
+                document.getElementById("gameMode1").className = "selected";
             }
         }
 
@@ -547,13 +562,18 @@ var challenges = {
 	<body onload="loadScreen()">
 		<div id="wrapper">
             <div id ="settings">
-                Interaction Style<br />
-                <button onclick="gameMode('oneswitch')">One Switch</button><br />
-                <button onclick="gameMode('twoswitch')">Two Switch</button><br />
-                <button onclick="gameMode('click')">Click</button><br /><br />
-                Challenge v Freeplay<br />
-                <button onclick="gameMode('freeplay')">Freeplay</button><br />
-                <button onclick="gameMode('challenge')">Challenge</button><br /><br />
+                <h1>Dress to the Max</h1><br />
+
+                <h2>Settings</h2><br />
+
+                <h3>Interaction Style</h3>
+                <button class="selected" id="interaction0" onclick="interactionMode('click')">Click</button>
+                <button onclick="interactionMode('oneswitch')" id="interaction1" >One Switch</button>
+                <button onclick="interactionMode('twoswitch')"id="interaction2" >Two Switch</button><br /><br />
+                <h3>Challenge vs Freeplay</h3>
+                <button class="selected" onclick="gameMode('freeplay')" id="gameMode0">Freeplay</button>
+                <button onclick="gameMode('challenge')" id="gameMode1" >Challenge</button><br /><br />
+                <h3>Play Game</h3>
                 <button onclick="hideDiv('settings')">Done</button>
             </div>
 			<h1>Dress to the Max</h1>
