@@ -4,9 +4,13 @@
     	<script type="text/javascript" src="navigation.json"></script>
         <script type="text/javascript" src="challenges.json"></script>
 		<script language="Javascript">
+
         //Settings Variables
-        var clickMode = true;  //dominate: if true, twoswitch boolean essentially false
-        var twoSwitch = false;
+        var CLICK = "clickMode";
+        var ONESWITCH = "oneSwitch";
+        var TWOSWITCH = "twoSwitch";
+        var currentMode = CLICK;
+        
         var timeIntreval = 400;
         var challengeMode = false;
 
@@ -30,7 +34,7 @@
 
 		function loadScreen() {
 			clearScreen();
-            if(clickMode == true){
+            if(currentMode == CLICK){
                 document.getElementById("actionBar").style.visibility="hidden";
             }else {
                 document.getElementById("actionBar").style.visibility="visible";
@@ -85,7 +89,7 @@
                 var label = "item" + j;
                 document.getElementById(label).className = "unSelected";
             }
-            if(clickMode == false){
+            if(currentMode != CLICK){
                 document.getElementById("promptButton").className = "selected";
             }
             document.getElementById("promptText").innerHTML = text;
@@ -93,7 +97,7 @@
         }
 
         window.setInterval(function(){
-            if(twoSwitch == false && clickMode == false && promptOpen == false){
+            if(currentMode == ONESWITCH && promptOpen == false){
                 iterate();
             }
         }, timeIntreval);
@@ -148,11 +152,11 @@
 
         function dealWithKeyboard(e){
             //alert(e.keyCode);
-            if(clickMode == false){
+            if(currentMode != CLICK){
                 if(promptOpen == true){
                     hideDiv('prompt');
                 }else {
-                    if(e.keyCode==13 || twoSwitch == false){
+                    if(e.keyCode==13 || currentMode == ONESWITCH){
                         selectionMade(highlightedItem);
                     }else {
                         iterate();
@@ -162,7 +166,7 @@
         }
 
         function itemClick(i){
-            if(clickMode == true){
+            if(currentMode == CLICK){
                 if(i == "prompt"){
                     hideDiv("prompt");
                 }else {
@@ -266,7 +270,7 @@
 			    document.getElementById(label).innerHTML = "";
 				document.getElementById(label).className = "unSelected";
 			}
-            if(clickMode == false){
+            if(currentMode != CLICK){
     			highlightedItem = 0;
     			document.getElementById("item0").className = "selected";
     			document.getElementById("actionText").innerHTML = currentParent.children[0].actionName;
@@ -279,15 +283,13 @@
             document.getElementById("interaction2").className = "unSelected";
 
             if(parameter == "twoswitch" ){
-                twoSwitch = true;
-                clickMode = false;
+                currentMode = TWOSWITCH;
                 document.getElementById("interaction2").className = "selected";
             }else if(parameter == "oneswitch" ){
-                twoSwitch = false;
-                clickMode = false;
+                currentMode = ONESWITCH;
                 document.getElementById("interaction1").className = "selected";
             }else if(parameter = "click"){
-                clickMode = true;
+                currentMode = CLICK;
                 document.getElementById("interaction0").className = "selected";
             }
         }
