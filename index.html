@@ -10,7 +10,7 @@
         var ONESWITCH = "oneSwitch";
         var TWOSWITCH = "twoSwitch";
         var currentMode = CLICK;
-        
+
         var timeIntreval = 400;
         var challengeMode = false;
 
@@ -22,7 +22,7 @@
 		var timer = settings.children[0];
 
         //Challenge Variables
-        var firstChallenge = false;
+        var isFirstChallenge = true;
         var challengeComplete = false;
         var promptOpen = false;
         var currentClothes = {};
@@ -32,26 +32,24 @@
         var challengeGoodFeedback = currentChallenge.positiveFeedback;
         var challengeBadFeedback = currentChallenge.negativeFeedback;
 
+        function clearScreen(){ //Resets grid to a clean slate
+            for (var j = 0; j < 10; j++) { 
+                var label = "item" + j;
+                document.getElementById(label).innerHTML = "";
+                document.getElementById(label).className = "unSelected";
+            }
+            if(currentMode != CLICK){
+                highlightedItem = 0;
+                document.getElementById("item0").className = "selected";
+                document.getElementById("actionText").innerHTML = currentParent.children[0].actionName;
+            }
+        }
+
 		function loadScreen() {
 			clearScreen();
-            if(currentMode == CLICK){
-                document.getElementById("actionBar").style.visibility="hidden";
-            }else {
-                document.getElementById("actionBar").style.visibility="visible";
-            }
-		
-            if(challengeMode == true){
-                document.getElementById("item9").style.visibility="visible";
-                if(challengeComplete == false){
-                    document.getElementById("item9").innerHTML = currentChallenge["challengePrompt"];
-                }else{
-                    document.getElementById("item9").innerHTML = "Next Challenge";
-                }
-                if(firstChallenge == false){
-                    showPrompt(currentChallenge.challengePrompt);
-                    firstChallenge = true;
-                }
-            }
+
+            var actionBarVisibility = (currentMode == CLICK) ? "hidden" : "visible";
+            document.getElementById("actionBar").style.visibility=actionBarVisibility;
 
 			//Fill in grid with appropriate items
 			for (var j = 0; j < currentParent.children.length; j++) { 
@@ -65,6 +63,17 @@
 				document.getElementById(label).innerHTML = "<img src='images/home.jpg'><br/ >Back";
 			}
 			
+            if(challengeMode == true){
+                //display 10th button
+                var tenthButtonText = (challengeComplete ? "Next Challenge" : currentChallenge["challengePrompt"]);
+                document.getElementById("item9").innerHTML = tenthButtonText;
+                document.getElementById("item9").style.visibility="visible";
+                
+                if(isFirstChallenge){
+                    showPrompt(currentChallenge.challengePrompt);
+                    isFirstChallenge = false;
+                }
+            }
 		}
 
         function showThought(text) {
@@ -181,7 +190,7 @@
                 loadScreen();
                 showPrompt(currentChallenge.challengePrompt);
             }
-			else if(currentLevel == 0){
+			else if(currentLevel == 0){ //Go into sub category
 				currentLevel = 1;
 				currentParent = navigation.children[selectedItem];
 				loadScreen();
@@ -232,7 +241,7 @@
 
             }
 
-            if(checkChallengeStatus() == true){
+            if(challengeIsComplete()){
                 challengeComplete = true;
                 currentLevel = 0;
                 currentParent = navigation;
@@ -241,9 +250,8 @@
             }
         }
 
-        function checkChallengeStatus(){
+        function challengeIsComplete(){
             var complete = true;
-            var index;
             var output = '', // initialise as string
                 val;
 
@@ -259,25 +267,10 @@
                     output += isAcceptable + "\n";
                 }
             }
-            //alert(output);
-
             return complete;
         }
 		
-		function clearScreen(){ //Resets grid to a clean slate
-			for (var j = 0; j < 10; j++) { 
-				var label = "item" + j;
-			    document.getElementById(label).innerHTML = "";
-				document.getElementById(label).className = "unSelected";
-			}
-            if(currentMode != CLICK){
-    			highlightedItem = 0;
-    			document.getElementById("item0").className = "selected";
-    			document.getElementById("actionText").innerHTML = currentParent.children[0].actionName;
-		    }
-        }
-
-        function interactionMode(parameter){
+        function changeInteractionMode(parameter){
             document.getElementById("interaction0").className = "unSelected";
             document.getElementById("interaction1").className = "unSelected";
             document.getElementById("interaction2").className = "unSelected";
@@ -293,7 +286,7 @@
                 document.getElementById("interaction0").className = "selected";
             }
         }
-        function gameMode(parameter){
+        function changePlayMode(parameter){
             document.getElementById("gameMode0").className = "unSelected";
             document.getElementById("gameMode1").className = "unSelected";
 
@@ -316,12 +309,12 @@
                 <h2>Settings</h2><br />
 
                 <h3>Interaction Style</h3>
-                <button class="selected" id="interaction0" onclick="interactionMode('click')">Click</button>
-                <button onclick="interactionMode('oneswitch')" id="interaction1" >One Switch</button>
-                <button onclick="interactionMode('twoswitch')"id="interaction2" >Two Switch</button><br /><br />
+                <button class="selected" id="interaction0" onclick="changeInteractionMode('click')">Click</button>
+                <button onclick="changeInteractionMode('oneswitch')" id="interaction1" >One Switch</button>
+                <button onclick="changeInteractionMode('twoswitch')"id="interaction2" >Two Switch</button><br /><br />
                 <h3>Challenge vs Freeplay</h3>
-                <button class="selected" onclick="gameMode('freeplay')" id="gameMode0">Freeplay</button>
-                <button onclick="gameMode('challenge')" id="gameMode1" >Challenge</button><br /><br />
+                <button class="selected" onclick="changePlayMode('freeplay')" id="gameMode0">Freeplay</button>
+                <button onclick="changePlayMode('challenge')" id="gameMode1" >Challenge</button><br /><br />
                 <h3>Play Game</h3>
                 <button onclick="hideDiv('settings')">Done</button>
             </div>
