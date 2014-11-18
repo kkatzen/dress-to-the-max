@@ -11,7 +11,7 @@ var navigation = {
             [
                 {
                     "filename":"shirt/shirt-1.png",
-                    "iconFile":"shirt/shirt.jpg",
+                    "iconFile":"shirt/shirt-1-icon.png",
                     "imageCaption":"Fireman Shirt",
                     "actionName":"Wear Fireman Shirt"
                 },
@@ -106,7 +106,7 @@ var navigation = {
                 },
                 {
                     "filename":"pants/pants-1.png",
-                    "iconFile":"pants/pants4.jpg",
+                    "iconFile":"pants/pants-1-icon.png",
                     "imageCaption":"Red Pants",
                     "actionName":"Wear Red Pants"
                 },
@@ -131,7 +131,14 @@ var navigation = {
                     "iconFile":"shoes/shoes.jpg",
                     "imageCaption":"shoes",
                     "actionName":"Wear shoes"
+                },
+                {
+                    "filename":"shoes/shoes-1.png",
+                    "iconFile":"shoes/shoes-1-icon.png",
+                    "imageCaption":"Black Shoes",
+                    "actionName":"Wear Black Shoes"
                 }
+
             ]
         },
         {
@@ -165,7 +172,7 @@ var navigation = {
                 },
                 {
                     "filename":"hat/hat-1.png",
-                    "iconFile":"hat/hat2.jpg",
+                    "iconFile":"hat/hat-1-icon.png",
                     "imageCaption":"Fire Helmet",
                     "actionName":"Wear Fire Helmet"
                 }

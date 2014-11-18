@@ -18,7 +18,10 @@ var challenges = {
             "negativeFeedback":"Is this what a Fireman would wear?",
             "children":
                 {
-                    "hat":[1]
+                    "hat":[1],
+                    "shirt":[0],
+                    "pants":[6],
+                    "shoes":[0,1]
                 }
         },
         {

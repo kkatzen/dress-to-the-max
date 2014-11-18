@@ -150,43 +150,9 @@ li {
 	height: 70px;
 	visibility: hidden;
 }
-
 .selected {
 	border: 1px solid red;
 	background: yellow;
-}
-
-#body {
-    position: absolute;
-    top: 0;
-    right: 0px;
-    width: 100%;
-    z-index: 10;
-}
-#accessories {
-    position: absolute;
-    top: 0;
-    right: 0px;
-}
-#shirt {
-    position: absolute;
-    top: 0;
-    right: 0px;
-}
-#jacket {
-    position: absolute;
-    top: 0;
-    right: 0px;
-}
-#pants {
-    position: absolute;
-    top: 0;
-    right: 0px;
-}
-#shoes {
-    position: absolute;
-    top: 0;
-    right: 0px;
 }
 #background {
     position: absolute;
@@ -194,13 +160,6 @@ li {
     right: 0px;
     z-index: 5;
 }
-#hair {
-    position: absolute;
-    top: 0;
-    right: 0px;
-    width: 100%;
-    z-index: 20;
-}
 #body {
     position: absolute;
     top: 0;
@@ -208,11 +167,45 @@ li {
     width: 100%;
     z-index: 10;
 }
-
-#hat {
+#shoes {
     position: absolute;
     top: 0;
     right: 0px;
     width: 100%;
     z-index: 20;
+}
+#pants {
+    position: absolute;
+    top: 0;
+    right: 0px;
+    width: 100%;
+    z-index: 30;
+}
+#shirt {
+    position: absolute;
+    top: 0;
+    right: 0px;
+    width: 100%;
+    z-index: 40;
+}
+#accessories {
+    position: absolute;
+    top: 0;
+    right: 0px;
+    width: 100%;
+    z-index: 50;
+}
+#hair {
+    position: absolute;
+    top: 0;
+    right: 0px;
+    width: 100%;
+    z-index: 60;
+}
+#hat {
+    position: absolute;
+    top: 0;
+    right: 0px;
+    width: 100%;
+    z-index: 70;
 }
