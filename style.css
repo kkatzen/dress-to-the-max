@@ -42,7 +42,7 @@ h1, h2, h3 {
 	width: 200px;
 	border: 2px solid gray;
 	background-color: white;
-	min-height: 70px;
+	min-height: 50px;
 	border-radius: 30px;
 	padding: 2px;
 	visibility: hidden;
@@ -62,6 +62,25 @@ h1, h2, h3 {
     position: absolute;
     height: 200px;
 	box-shadow: 0px 0px 10px #888888;
+	visibility: hidden;
+	z-index: 1000;
+	text-align:center;
+	padding-top: 80px;
+}
+
+#congrats
+ {
+	width: 400px;
+	border: 3px solid #DF97AE;
+	background-color: white;
+	margin-left: 210px;
+	margin-top: 70px;
+	min-height: 70px;
+	border-radius: 10px;
+	padding: 2px;
+    position: absolute;
+    height: 100px;
+	box-shadow: 0px 0px 300px #888888;
 	visibility: hidden;
 	z-index: 1000;
 	text-align:center;
@@ -137,10 +156,12 @@ li {
 	background: yellow;
 }
 
-#hat {
+#body {
     position: absolute;
     top: 0;
     right: 0px;
+    width: 100%;
+    z-index: 10;
 }
 #accessories {
     position: absolute;
@@ -186,4 +207,12 @@ li {
     right: 0px;
     width: 100%;
     z-index: 10;
+}
+
+#hat {
+    position: absolute;
+    top: 0;
+    right: 0px;
+    width: 100%;
+    z-index: 20;
 }

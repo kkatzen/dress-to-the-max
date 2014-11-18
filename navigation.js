@@ -10,7 +10,7 @@ var navigation = {
             "children":
             [
                 {
-                    "filename":"shirt/shirt.jpg",
+                    "filename":"shirt/shirt-1.png",
                     "iconFile":"shirt/shirt.jpg",
                     "imageCaption":"Fireman Shirt",
                     "actionName":"Wear Fireman Shirt"
@@ -105,10 +105,10 @@ var navigation = {
                     "actionName":"Wear Pajamas"
                 },
                 {
-                    "filename":"pants/pants4.jpg",
+                    "filename":"pants/pants-1.png",
                     "iconFile":"pants/pants4.jpg",
-                    "imageCaption":"Fireman Pants",
-                    "actionName":"Wear Fireman Pants"
+                    "imageCaption":"Red Pants",
+                    "actionName":"Wear Red Pants"
                 },
                 {
                     "filename":"pants/pants4.jpg",
@@ -164,10 +164,10 @@ var navigation = {
                     "actionName":"Wear Sun Hat"
                 },
                 {
-                    "filename":"hat/hat2.jpg",
+                    "filename":"hat/hat-1.png",
                     "iconFile":"hat/hat2.jpg",
-                    "imageCaption":"Red Hat",
-                    "actionName":"Wear Red Hat"
+                    "imageCaption":"Fire Helmet",
+                    "actionName":"Wear Fire Helmet"
                 }
             ]
         },
