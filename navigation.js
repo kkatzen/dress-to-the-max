@@ -5,7 +5,7 @@ var navigation = {
         {
             "divId":"shirt",
             "iconFile":"shirt.jpg",
-            "imageCaption":"Shirt",
+            "imageCaption":"Tops",
             "actionName":"View Shirts",
             "children":
             [
@@ -136,8 +136,8 @@ var navigation = {
         },
         {
             "iconFile":"jacket.jpg",
-            "imageCaption":"Jackets",
-            "actionName":"View Jackets",
+            "imageCaption":"Background",
+            "actionName":"View Backgrounds",
             "children":
             [
             

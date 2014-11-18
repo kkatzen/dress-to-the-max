@@ -184,6 +184,21 @@
             }
         }
 
+        function itemHover(i){
+            if(currentMode == CLICK){
+                var label = "item" + i;
+                document.getElementById(label).className = "selected";
+            }
+        }
+        function itemHoverOff(i){
+            if(currentMode == CLICK){
+                var label = "item" + i;
+                document.getElementById(label).className = "unSelected";
+            }
+        }
+
+
+
 		function selectionMade(selectedItem) {
             if(selectedItem == 9){ //Next Challenge
                 proceedToNextChallenge();
@@ -346,16 +361,16 @@
 				    Action: <span id ="actionText">asdf</span>
                 </div>
 				<ul onkeydown="keypress1(event);" id="navlist">
-					<li id="item0" onclick="itemClick(0)"></li>
-                    <li id="item1" onclick="itemClick(1)"></li>
-                    <li id="item2" onclick="itemClick(2)"></li>
-                    <li id="item3" onclick="itemClick(3)"></li>
-                    <li id="item4" onclick="itemClick(4)"></li>
-                    <li id="item5" onclick="itemClick(5)"></li>
-                    <li id="item6" onclick="itemClick(6)"></li>
-                    <li id="item7" onclick="itemClick(7)"></li>
-                    <li id="item8" onclick="itemClick(8)"></li>
-                    <li id="item9" onclick="itemClick(9)"></li>
+					<li id="item0" onclick="itemClick(0)" onmouseover="itemHover(0)" onmouseout="itemHoverOff(0)"></li>
+                    <li id="item1" onclick="itemClick(1)" onmouseover="itemHover(1)" onmouseout="itemHoverOff(1)"></li>
+                    <li id="item2" onclick="itemClick(2)" onmouseover="itemHover(2)" onmouseout="itemHoverOff(2)"></li>
+                    <li id="item3" onclick="itemClick(3)" onmouseover="itemHover(3)" onmouseout="itemHoverOff(3)"></li>
+                    <li id="item4" onclick="itemClick(4)" onmouseover="itemHover(4)"  onmouseout="itemHoverOff(4)"></li>
+                    <li id="item5" onclick="itemClick(5)" onmouseover="itemHover(5)"  onmouseout="itemHoverOff(5)"></li>
+                    <li id="item6" onclick="itemClick(6)" onmouseover="itemHover(6)"  onmouseout="itemHoverOff(6)"></li>
+                    <li id="item7" onclick="itemClick(7)" onmouseover="itemHover(7)"  onmouseout="itemHoverOff(7)"></li>
+                    <li id="item8" onclick="itemClick(8)" onmouseover="itemHover(8)"  onmouseout="itemHoverOff(8)"></li>
+                    <li id="item9" onclick="itemClick(9)" onmouseover="itemHover(9)"  onmouseout="itemHoverOff(9)"></li>
 				</ul>
 			</div>
 		</div>
