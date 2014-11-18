@@ -37,6 +37,8 @@
         var currentChallenge = challenges.children[challengeIterator];
         var challengeGoodFeedback = currentChallenge.positiveFeedback;
         var challengeBadFeedback = currentChallenge.negativeFeedback;
+        var debounceTimeout = 1000;//Timeout after a keypress before a different keypress will be allowed. 1000 = 1 second
+        var debounceEnabled = 0;//Boolean, used to know when game is debouncing keyboard input
 
         function clearScreen(){ //Resets grid to a clean slate
             for (var j = 0; j < 10; j++) { 
@@ -164,20 +166,36 @@
             challengeComplete = false;
         
         }
+        
+
+        function debounceKeyPress(amount){
+            debounceEnabled=1;//Begin debounce
+            setTimeout(function(){unDebounce();},amount);//Undebounce will be called after the timeout amount given.
+        }
+        function unDebounce(){//Do not call this function unless in timeout
+            debounceEnabled=0;
+        }
+
 
         function dealWithKeyboard(e){
-            //alert(e.keyCode);
-            if(currentMode != CLICK){
+        //The debounceKeyPress calls can be given with any delay necessary. debounceTimeout is the default right now.          
+            if(currentMode != CLICK && !debounceEnabled){
                 if(promptOpen == true){
                     hideDiv('prompt');
+                    debounceKeyPress(debounceTimeout);
                 }else {
-                    if(e.keyCode==13 || currentMode == ONESWITCH){
+                    if(currentMode == ONESWITCH){//If in ONESWITCH mode
                         selectionMade(highlightedItem);
-                    }else {
+                        debounceKeyPress(debounceTimeout);
+                    }else if (e.keyCode==13){//TWOSWITCH mode and key press is enter.  
+                        selectionMade(highlightedItem);
+                        debounceKeyPress(debounceTimeout);
+                    }else {//CurrentMode==TWOSWITCH and key is not enter
                         iterate();
+                        debounceKeyPress(debounceTimeout);
                     }
                 }
-            }
+            }            
         }
 
         function itemClick(i){
