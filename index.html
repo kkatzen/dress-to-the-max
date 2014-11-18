@@ -186,24 +186,32 @@
 
         function itemHover(i){
             if(currentMode == CLICK){
-                var label = "item" + i;
-                document.getElementById(label).className = "selected";
+                if(i == "prompt"){
+                    document.getElementById("promptButton").className = "selected";
+                }else {
+                    var label = "item" + i;
+                    document.getElementById(label).className = "selected";
+                }
             }
         }
         function itemHoverOff(i){
             if(currentMode == CLICK){
-                var label = "item" + i;
-                document.getElementById(label).className = "unSelected";
+                if(i == "prompt"){
+                    document.getElementById("promptButton").className = "unSelected";
+                }else {
+                    var label = "item" + i;
+                    document.getElementById(label).className = "unSelected";
+                }
             }
         }
 
-
-
 		function selectionMade(selectedItem) {
             if(selectedItem == 9){ //Next Challenge
-                proceedToNextChallenge();
-                loadScreen();
-                showPrompt(currentChallenge.challengePrompt);
+                if(challengeComplete == true){
+                    proceedToNextChallenge();
+                    loadScreen();
+                    showPrompt(currentChallenge.challengePrompt);
+                }
             }
 			else if(currentLevel == 0){ //Go into sub category
 				currentLevel = 1;
@@ -337,7 +345,7 @@
             <div id ="prompt">
                 <span id="promptText"></span>
                 <ul>
-                    <li id="promptButton" onclick="itemClick('prompt')">OK
+                    <li id="promptButton" onclick="itemClick('prompt')" onmouseover="itemHover('prompt')" onmouseout="itemHoverOff('prompt')">OK
                     </li>
                 </ul>
             </div>
