@@ -82,6 +82,12 @@
             window.setTimeout(function(){hideDiv("thoughts")},1000)
         }
 
+        function showCongrats(text) {
+            document.getElementById("congrats").innerHTML = text;
+            document.getElementById("congrats").style.visibility="visible";
+            window.setTimeout(function(){hideDiv("congrats")},800)
+        }
+
         function hideDiv(parameter) {
             document.getElementById(parameter).style.visibility="hidden";
             if(parameter == "settings"){
@@ -188,6 +194,10 @@
             if(currentMode == CLICK){
                 if(i == "prompt"){
                     document.getElementById("promptButton").className = "selected";
+                }else if(i == 9){
+                    if(challengeComplete == true){
+                        document.getElementById("item9").className = "selected";
+                    }
                 }else {
                     var label = "item" + i;
                     document.getElementById(label).className = "selected";
@@ -269,6 +279,7 @@
                 currentLevel = 0;
                 currentParent = navigation;
                 loadScreen();
+                showCongrats("Yeah you got it!");
                 document.getElementById("item9").innerHTML = "Next Challenge";
             }
         }
@@ -348,6 +359,9 @@
                     <li id="promptButton" onclick="itemClick('prompt')" onmouseover="itemHover('prompt')" onmouseout="itemHoverOff('prompt')">OK
                     </li>
                 </ul>
+            </div>
+            <div id ="congrats">
+                Yeah, you got it!
             </div>
             <div id="leftSide">
                <div id ="thoughts">
