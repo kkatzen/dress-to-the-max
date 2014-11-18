@@ -10,9 +10,15 @@
         var ONESWITCH = "oneSwitch";
         var TWOSWITCH = "twoSwitch";
         var currentMode = CLICK;
-
-        var timeIntreval = 400;
         var challengeMode = false;
+
+        window.clearInterval(intv);
+        var intv = window.setInterval(function(){
+            if(currentMode == ONESWITCH && promptOpen == false){
+                iterate();
+            }
+        }, 1000);
+
 
         //Navigation Variables
 		var currentLevel = 0;
@@ -85,7 +91,7 @@
         function showCongrats(text) {
             document.getElementById("congrats").innerHTML = text;
             document.getElementById("congrats").style.visibility="visible";
-            window.setTimeout(function(){hideDiv("congrats")},800)
+            window.setTimeout(function(){hideDiv("congrats")},1500)
         }
 
         function hideDiv(parameter) {
@@ -110,12 +116,6 @@
             document.getElementById("promptText").innerHTML = text;
             document.getElementById("prompt").style.visibility="visible";
         }
-
-        window.setInterval(function(){
-            if(currentMode == ONESWITCH && promptOpen == false){
-                iterate();
-            }
-        }, timeIntreval);
 
 		function iterate(){
 		
@@ -246,7 +246,7 @@
                     }
 				}
 			}else { //NOTE: level 2 currently implies settings is parent
-				if(highlightedItem == currentParent.children.length){ //going back a level
+				/*if(highlightedItem == currentParent.children.length){ //going back a level
 					currentLevel = 1;
 					currentParent = settings;
 					loadScreen();
@@ -256,7 +256,7 @@
 						timeIntreval = timer.children[selectedItem].time;
 						
 					}
-				}
+				}*/
 			}
 		}	
 
@@ -279,7 +279,7 @@
                 currentLevel = 0;
                 currentParent = navigation;
                 loadScreen();
-                showCongrats("Yeah you got it!");
+                showCongrats(currentChallenge.completeFeedback);
                 document.getElementById("item9").innerHTML = "Next Challenge";
             }
         }
@@ -312,14 +312,18 @@
             if(parameter == "twoswitch" ){
                 currentMode = TWOSWITCH;
                 document.getElementById("interaction2").className = "selected";
+                document.getElementById("timerSettings").style.display="none";
             }else if(parameter == "oneswitch" ){
                 currentMode = ONESWITCH;
                 document.getElementById("interaction1").className = "selected";
+                document.getElementById("timerSettings").style.display="block";
             }else if(parameter = "click"){
                 currentMode = CLICK;
                 document.getElementById("interaction0").className = "selected";
+                document.getElementById("timerSettings").style.display="none";
             }
         }
+
         function changePlayMode(parameter){
             document.getElementById("gameMode0").className = "unSelected";
             document.getElementById("gameMode1").className = "unSelected";
@@ -330,6 +334,37 @@
             }else if(parameter == "challenge" ){
                 challengeMode = true;
                 document.getElementById("gameMode1").className = "selected";
+            }
+        }
+        function changeSpeed(parameter){
+            document.getElementById("speed0").className = "unSelected";
+            document.getElementById("speed1").className = "unSelected";
+            document.getElementById("speed2").className = "unSelected";
+
+            if(parameter == "0" ){
+                document.getElementById("speed0").className = "selected";
+                window.clearInterval(intv);
+                intv = window.setInterval(function(){
+                    if(currentMode == ONESWITCH && promptOpen == false){
+                        iterate();
+                    }
+                }, 1000);
+            }else if(parameter == "1" ){
+                document.getElementById("speed1").className = "selected";
+                window.clearInterval(intv);
+                intv = window.setInterval(function(){
+                    if(currentMode == ONESWITCH && promptOpen == false){
+                        iterate();
+                    }
+                }, 2500);
+            }else if(parameter = "2"){
+                document.getElementById("speed2").className = "selected";
+                window.clearInterval(intv);
+                intv = window.setInterval(function(){
+                    if(currentMode == ONESWITCH && promptOpen == false){
+                        iterate();
+                    }
+                }, 3500);
             }
         }
 
@@ -346,6 +381,12 @@
                 <button class="selected" id="interaction0" onclick="changeInteractionMode('click')">Click</button>
                 <button onclick="changeInteractionMode('oneswitch')" id="interaction1" >One Switch</button>
                 <button onclick="changeInteractionMode('twoswitch')"id="interaction2" >Two Switch</button><br /><br />
+                <div id ="timerSettings">
+                    <h3>Timer Speed</h3>
+                    <button class="selected" id="speed0" onclick="changeSpeed('0')">1 Second</button>
+                    <button onclick="changeSpeed('1')" id="speed1" >2.5 Seconds</button>
+                    <button onclick="changeSpeed('2')"id="speed2" >3.5 Seconds</button><br /><br />
+                </div>
                 <h3>Challenge vs Freeplay</h3>
                 <button class="selected" onclick="changePlayMode('freeplay')" id="gameMode0">Freeplay</button>
                 <button onclick="changePlayMode('challenge')" id="gameMode1" >Challenge</button><br /><br />

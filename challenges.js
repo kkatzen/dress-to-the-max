@@ -3,19 +3,10 @@ var challenges = {
     "children":
     [
         {
-            "challengePrompt":"Dress Max like a Doctor!!",
-            "positiveFeedback":"Perfect!",
-            "negativeFeedback":"Is this what a Doctor would wear?",
-            "children":
-                {
-                    "shirt":[1,4],
-                    "pants":[3]
-                }
-        },
-        {
             "challengePrompt":"Dress Max like a Fireman",
             "positiveFeedback":"Get at me fires!",
             "negativeFeedback":"Is this what a Fireman would wear?",
+            "completeFeedback":"Yeah! Now Max is ready to take on the fires!",
             "children":
                 {
                     "hat":[1],
@@ -28,6 +19,7 @@ var challenges = {
             "challengePrompt":"Wear a scarf! its cold yo",
             "positiveFeedback":"Yay so warm now!",
             "negativeFeedback":"Hurry I'm freezing to death!!!",
+            "completeFeedback":"Yeah! Now Max won't be cold!",
             "children":
                 {
                     "accessories":[0]

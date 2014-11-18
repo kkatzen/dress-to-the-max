@@ -113,6 +113,10 @@ h1, h2, h3 {
 	text-align: center;
 	z-index: 100;
 }
+#timerSettings {
+	display: none;
+
+}
 button {
 	padding: 10px;
 

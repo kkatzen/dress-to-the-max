@@ -69,8 +69,8 @@ var navigation = {
             [
             
                 {
-                    "filename":"pants/pants.jpg",
-                    "iconFile":"pants/pants.jpg",
+                    "filename":"pants/pants-3.png",
+                    "iconFile":"pants/pants-3-icon.png",
                     "imageCaption":"Jeans",
                     "actionName":"Wear Jeans"
                 },
@@ -81,8 +81,8 @@ var navigation = {
                     "actionName":"Wear Shorts"
                 },
                 {
-                    "filename":"pants/pants3.jpg",
-                    "iconFile":"pants/pants3.jpg",
+                    "filename":"pants/pants-2.png",
+                    "iconFile":"pants/pants-2-icon.png",
                     "imageCaption":"Yoga Pants",
                     "actionName":"Wear Yoga Pants"
                 },
@@ -220,22 +220,22 @@ var navigation = {
         {
             "divId":"body",
             "iconFile":"body/body-1-icon.png",
-            "imageCaption":"Body",
-            "actionName":"View Bodies",
+            "imageCaption":"Skin",
+            "actionName":"View Skin Colors",
             "children":
             [
             
                 {
                     "filename":"body/body-1.png",
                     "iconFile":"body/body-1-icon.png",
-                    "imageCaption":"Pale Body",
-                    "actionName":"Wear Pale Body"
+                    "imageCaption":"Peach Body",
+                    "actionName":"Wear Peach Body"
                 },
                 {
                     "filename":"body/body-2.png",
                     "iconFile":"body/body-2-icon.png",
-                    "imageCaption":"Dark Body",
-                    "actionName":"Wear Dark Body"
+                    "imageCaption":"Brown Body",
+                    "actionName":"Wear Brown Body"
                 },
                 {
                     "filename":"body/body-3.png",
