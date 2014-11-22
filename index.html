@@ -24,8 +24,6 @@
 		var currentLevel = 0;
 		var highlightedItem = 0;
 		var currentParent = navigation;
-		var settings = navigation.children[8];
-		var timer = settings.children[0];
 
         //Challenge Variables
         var isFirstChallenge = true;
@@ -163,8 +161,7 @@
             currentChallenge = challenges.children[challengeIterator];
             challengeGoodFeedback = currentChallenge.positiveFeedback;
             challengeBadFeedback = currentChallenge.negativeFeedback;
-            challengeComplete = false;
-        
+            challengeComplete = false;    
         }
         
 
@@ -196,6 +193,18 @@
                     }
                 }
             }            
+        }
+
+        function clearAll(){
+            var bodyUrl = "images/" + navigation.children[6].children[0].filename;
+            document.getElementById("body").src=bodyUrl;
+            document.getElementById("hair").src="images/nothing.png";
+            document.getElementById("hat").src="images/nothing.png";
+            document.getElementById("accessories").src="images/nothing.png";
+            document.getElementById("pants").src="images/nothing.png";
+            document.getElementById("shirt").src="images/nothing.png";
+            document.getElementById("shoes").src="images/nothing.png";
+            document.getElementById("background").src="images/nothing.png";
         }
 
         function itemClick(i){
@@ -242,17 +251,18 @@
                 }
             }
 			else if(currentLevel == 0){ //Go into sub category
-				currentLevel = 1;
-				currentParent = navigation.children[selectedItem];
-				loadScreen();
+                if(selectedItem == 8){ //clear all
+                    clearAll();
+//                    showPrompt("Are you sure you want to clear?");
+                }else {
+    				currentLevel = 1;
+    	   			currentParent = navigation.children[selectedItem];
+    				loadScreen();
+                }
 			}else if (currentLevel == 1) {
 				if(selectedItem == currentParent.children.length){ //going back a level
 					currentLevel = 0;
 					currentParent = navigation;
-					loadScreen();
-				}else if(currentParent == settings){ //going forward a level within settings
-					currentLevel = 2;
-					currentParent = settings.children[selectedItem];
 					loadScreen();
 				}else{  //add clothing item to screen
 					url = "images/"+ currentParent.children[selectedItem].filename;
@@ -263,18 +273,6 @@
                         giveChallengeFeedback(selectedItem);
                     }
 				}
-			}else { //NOTE: level 2 currently implies settings is parent
-				/*if(highlightedItem == currentParent.children.length){ //going back a level
-					currentLevel = 1;
-					currentParent = settings;
-					loadScreen();
-				}else {
-					//do seomthing to change settings
-					if(currentParent == timer){
-						timeIntreval = timer.children[selectedItem].time;
-						
-					}
-				}*/
 			}
 		}	
 
@@ -430,7 +428,6 @@
     				<img id="hat" >
     				<img id="accessories" >
     				<img id="shirt" >
-    				<img id="jacket"  >
     				<img id="pants"  >
     				<img id="shoes" >
     				<img id="backgrounds" >

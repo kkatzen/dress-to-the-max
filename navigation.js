@@ -316,60 +316,11 @@ var navigation = {
             ]
         },
         {
-            "divId":"settings",
+            "divId":"clear",
             "iconFile":"settings.jpg",
-            "imageCaption":"Settings",
-            "actionName":"Change Settings",
-            "children":
-            [
-            
-                {
-                    "filename":"settings/clock.jpg",
-                    "imageCaption":"Timer",
-                    "actionName":"Change Timer",
-                    "children":
-                    [
-                        {
-                            "time":700,
-                           "filename":"settings/clock.jpg",
-                           "imageCaption":"small",
-                           "actionName":"S"
-                        },
-                        {
-                            "time":1000,
-                           "filename":"settings/clock.jpg",
-                           "imageCaption":"medium",
-                           "actionName":"M"
-                        },
-                        {
-                            "time":1500,
-                           "filename":"settings/clock.jpg",
-                           "imageCaption":"long",
-                           "actionName":"long"
-                        }
-                    ]
-                },
-                {
-                    "filename":"settings/puzzle.jpg",
-                    "imageCaption":"Game Mode",
-                    "actionName":"Change game Mode",
-                    "children":
-                    [
-                        {
-                           "filename":"settings/puzzle.jpg",
-                           "imageCaption":"Freeplay",
-                           "actionName":"Use Freeplay Mode"
-                        },
-                        {
-                            "time":1000,
-                           "filename":"settings/puzzle.jpg",
-                           "imageCaption":"Challenge",
-                           "actionName":"Use Challenge Mode"
-                        }
-                        
-                    ]
-                }
-            ]
+            "imageCaption":"Clear All",
+            "actionName":"Clear All Items on Screen",
+           
         }
     ]
 }
