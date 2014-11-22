@@ -62,7 +62,7 @@ var navigation = {
         },
         {
             "divId":"pants",
-            "iconFile":"pants.jpg",
+            "iconFile":"pants/pants-3-icon.png",
             "imageCaption":"Pants",
             "actionName":"View Pants",
             "children":
@@ -75,8 +75,8 @@ var navigation = {
                     "actionName":"Wear Jeans"
                 },
                 {
-                    "filename":"pants/pants2.jpg",
-                    "iconFile":"pants/pants2.jpg",
+                    "filename":"pants/pants-4.png",
+                    "iconFile":"pants/pants-4-icon.png",
                     "imageCaption":"Shorts",
                     "actionName":"Wear Shorts"
                 },
@@ -87,20 +87,20 @@ var navigation = {
                     "actionName":"Wear Yoga Pants"
                 },
                 {
-                    "filename":"pants/scrubs.jpg",
-                    "iconFile":"pants/scrubs.jpg",
-                    "imageCaption":"Scrubs",
-                    "actionName":"Wear Scrubs"
+                    "filename":"pants/pants-7.png",
+                    "iconFile":"pants/pants-7-icon.png",
+                    "imageCaption":"Green Skirt",
+                    "actionName":"Wear Green Skirt"
                 },
                 {
-                    "filename":"pants/pants4.jpg",
-                    "iconFile":"pants/pants4.jpg",
-                    "imageCaption":"Skirt",
-                    "actionName":"Wear Skirt"
+                    "filename":"pants/pants-6.png",
+                    "iconFile":"pants/pants-6-icon.png",
+                    "imageCaption":"Purple Skirt",
+                    "actionName":"Wear Puprle Skirt"
                 },
                 {
-                    "filename":"pants/pants4.jpg",
-                    "iconFile":"pants/pants4.jpg",
+                    "filename":"pants/pants-5.png",
+                    "iconFile":"pants/pants-5-icon.png",
                     "imageCaption":"Pajamas",
                     "actionName":"Wear Pajamas"
                 },
@@ -111,8 +111,8 @@ var navigation = {
                     "actionName":"Wear Red Pants"
                 },
                 {
-                    "filename":"pants/pants4.jpg",
-                    "iconFile":"pants/pants4.jpg",
+                    "filename":"pants/pants-8.png",
+                    "iconFile":"pants/pants-8-icon.png",
                     "imageCaption":"Kilt",
                     "actionName":"Wear Kilt"
                 }            
