@@ -11,14 +11,19 @@
         var TWOSWITCH = "twoSwitch";
         var currentMode = CLICK;
         var challengeMode = false;
+        var CLEAR = "clearAll";
+        var NONE = "none";  //ie there is one option- close it
+        var promptAction = NONE;
 
         window.clearInterval(intv);
         var intv = window.setInterval(function(){
-            if(currentMode == ONESWITCH && promptOpen == false){
-                iterate();
+            if(currentMode == ONESWITCH){
+                if(promptOpen == false || promptAction != NONE){
+                    //should not be iterating if prompt is open with no action
+                    iterate();
+                }
             }
         }, 1000);
-
 
         //Navigation Variables
 		var currentLevel = 0;
@@ -96,15 +101,21 @@
 
         function hideDiv(parameter) {
             document.getElementById(parameter).style.visibility="hidden";
-            if(parameter == "settings"){
-                loadScreen();
-            }else if(parameter == "prompt"){
+            if(parameter == "prompt"){
                 promptOpen = false;
+                document.getElementById("promptButtonCancel").style.visibility="hidden"; 
+                //make sure cancel button not visible also
+            }
+            if (parameter != "thoughts") {
                 loadScreen();
             }
         }
 
         function showPrompt(text) {
+            var cancelButtonVisibility = (promptAction == NONE) ? "hidden" : "visible";
+            document.getElementById("promptButtonCancel").style.visibility=cancelButtonVisibility;
+            document.getElementById("promptButtonCancel").className = "unSelected";
+            
             promptOpen = true;
             for (var j = 0; j < 10; j++) { 
                 var label = "item" + j;
@@ -115,39 +126,53 @@
             }
             document.getElementById("promptText").innerHTML = text;
             document.getElementById("prompt").style.visibility="visible";
+            highlightedItem = 0;
         }
 
 		function iterate(){
-		
-			//unselect previous
-			document.getElementById("item" + highlightedItem).className = "unSelected";
+            if(promptOpen == true && promptAction != NONE){
+                document.getElementById("promptButton").className = "unSelected";
+                document.getElementById("promptButtonCancel").className = "unSelected";
+                if(highlightedItem == 0){
+                    document.getElementById("promptButtonCancel").className = "selected";
+                    highlightedItem = 1;
+                }else {
+                    document.getElementById("promptButton").className = "selected";
+                    highlightedItem = 0;
+                }
+            }else {
 
-			//increment which item we're currently selecting
-			highlightedItem = highlightedItem+1;
-			maxLength = currentParent.children.length;
-			
-			if(currentLevel > 0){  //add one for back button if not homescreen
-				maxLength = maxLength +1;  
-			}else {
+            //unselect previous
+            document.getElementById("item" + highlightedItem).className = "unSelected";
+
+            //increment which item we're currently selecting
+            highlightedItem = highlightedItem+1;
+            maxLength = currentParent.children.length;
+            
+            if(currentLevel > 0){  //add one for back button if not homescreen
+                maxLength = maxLength +1;  
+            }else {
                 if(challengeComplete==true){maxLength++;}
             }
-			
-			//end of loop, begin at zero
-			if(highlightedItem == maxLength){
-				highlightedItem = 0;
-			}
-			
-			//add action name
-			if(currentLevel > 0 && highlightedItem == currentParent.children.length){
-				document.getElementById("actionText").innerHTML = "Go back";
-			}else if(currentLevel == 0 && highlightedItem == 9){
+            
+            //end of loop, begin at zero
+            if(highlightedItem == maxLength){
+                highlightedItem = 0;
+            }
+            
+            //add action name
+            if(currentLevel > 0 && highlightedItem == currentParent.children.length){
+                document.getElementById("actionText").innerHTML = "Go back";
+            }else if(currentLevel == 0 && highlightedItem == 9){
                 document.getElementById("actionText").innerHTML = "Next Challenge";
             } else{
-				document.getElementById("actionText").innerHTML = currentParent.children[highlightedItem].actionName;
-			}
-			
-			//highlight current selection 
-			document.getElementById("item" + highlightedItem).className = "selected";
+                document.getElementById("actionText").innerHTML = currentParent.children[highlightedItem].actionName;
+            }
+            
+            //highlight current selection 
+            document.getElementById("item" + highlightedItem).className = "selected";
+            }
+		
 
 		}
 		
@@ -156,7 +181,7 @@
         function proceedToNextChallenge() {
             challengeIterator = challengeIterator + 1;
             if(numberOfChallenges <= challengeIterator){
-                showPrompt("All challenges completed! Refresh page to play again.");
+                showPrompt("All challenges completed! <br />Refresh page to play again.");
             }
             currentChallenge = challenges.children[challengeIterator];
             challengeGoodFeedback = currentChallenge.positiveFeedback;
@@ -177,19 +202,42 @@
         function dealWithKeyboard(e){
         //The debounceKeyPress calls can be given with any delay necessary. debounceTimeout is the default right now.          
             if(currentMode != CLICK && !debounceEnabled){
-                if(promptOpen == true){
-                    hideDiv('prompt');
-                    debounceKeyPress(debounceTimeout);
+                if(promptOpen == true && promptAction == NONE){
+                        hideDiv('prompt');
+                       // debounceKeyPress(debounceTimeout);
+                }else if(promptOpen == true && promptAction == CLEAR){
+                    if(currentMode == ONESWITCH){//If in ONESWITCH mode
+                        if (highlightedItem == 0){
+                            promptAction = NONE;
+                            hideDiv('prompt');
+                            clearAll();
+                        }else {
+                            promptAction = NONE;
+                            hideDiv('prompt');
+                        }
+                    }else if (e.keyCode==13){//TWOSWITCH mode and key press is enter.  
+                        if (highlightedItem == 0){
+                            promptAction = NONE;
+                            hideDiv('prompt');
+                            clearAll();
+                        }else {
+                            promptAction = NONE;
+                            hideDiv('prompt');
+                        }
+                    }else {//CurrentMode==TWOSWITCH and key is not enter
+                        iterate();
+                    }
+                        
                 }else {
                     if(currentMode == ONESWITCH){//If in ONESWITCH mode
                         selectionMade(highlightedItem);
-                        debounceKeyPress(debounceTimeout);
+                      //  debounceKeyPress(debounceTimeout);
                     }else if (e.keyCode==13){//TWOSWITCH mode and key press is enter.  
                         selectionMade(highlightedItem);
-                        debounceKeyPress(debounceTimeout);
+                       // debounceKeyPress(debounceTimeout);
                     }else {//CurrentMode==TWOSWITCH and key is not enter
                         iterate();
-                        debounceKeyPress(debounceTimeout);
+                      //  debounceKeyPress(debounceTimeout);
                     }
                 }
             }            
@@ -209,7 +257,13 @@
 
         function itemClick(i){
             if(currentMode == CLICK){
-                if(i == "prompt"){
+                if(i == "prompt"){ //Ok was selected on prompt
+                    hideDiv("prompt");
+                    if (promptAction == CLEAR){
+                        clearAll();
+                        promptAction = NONE;
+                    }
+                }else if (i == "promptCancel"){
                     hideDiv("prompt");
                 }else {
                     selectionMade(i);
@@ -221,6 +275,8 @@
             if(currentMode == CLICK){
                 if(i == "prompt"){
                     document.getElementById("promptButton").className = "selected";
+                }else if(i == "promptCancel"){
+                    document.getElementById("promptButtonCancel").className = "selected";
                 }else if(i == 9){
                     if(challengeComplete == true){
                         document.getElementById("item9").className = "selected";
@@ -235,6 +291,8 @@
             if(currentMode == CLICK){
                 if(i == "prompt"){
                     document.getElementById("promptButton").className = "unSelected";
+                }else if(i == "promptCancel"){
+                    document.getElementById("promptButtonCancel").className = "unSelected";
                 }else {
                     var label = "item" + i;
                     document.getElementById(label).className = "unSelected";
@@ -252,8 +310,8 @@
             }
 			else if(currentLevel == 0){ //Go into sub category
                 if(selectedItem == 8){ //clear all
-                    clearAll();
-//                    showPrompt("Are you sure you want to clear?");
+                    promptAction = CLEAR;
+                    showPrompt("Are you sure you want to clear?");
                 }else {
     				currentLevel = 1;
     	   			currentParent = navigation.children[selectedItem];
@@ -415,8 +473,12 @@
                 <ul>
                     <li id="promptButton" onclick="itemClick('prompt')" onmouseover="itemHover('prompt')" onmouseout="itemHoverOff('prompt')">OK
                     </li>
+                    <li id="promptButtonCancel" onclick="itemClick('promptCancel')" onmouseover="itemHover('promptCancel')" onmouseout="itemHoverOff('promptCancel')">Cancel
+                    </li>
+
                 </ul>
             </div>
+
             <div id ="congrats">
                 Yeah, you got it!
             </div>
