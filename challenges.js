@@ -4,9 +4,9 @@ var challenges = {
     [
         {
             "challengePrompt":"Dress Max like a Fireman",
-            "positiveFeedback":"Get at me fires!",
+            "positiveFeedback":"This is perfect for a Firefighter!",
             "negativeFeedback":"Is this the best choice for a Firefighter?",
-            "completeFeedback":"Yeah! Now Max is ready to take on the fires!",
+            "completeFeedback":"Yeah! Now Max is ready to fight any fire!",
             "children":
                 {
                     "hat":[1],
@@ -16,13 +16,14 @@ var challenges = {
                 }
         },
         {
-            "challengePrompt":"Max is sleepy... Lets put on Pajamas!",
-            "positiveFeedback":"This is perfect!",
+            "challengePrompt":"Max is sleepy... Let's put on Pajamas!",
+            "positiveFeedback":"How comfy!",
             "negativeFeedback":"Will this be comfortable to sleep in?",
             "completeFeedback":"Yeah! Now Max is ready for bed!",
             "children":
                 {
-                    "pants":[5]
+                    "pants":[5],
+                    "shoes":[3],
                 }
         }
 

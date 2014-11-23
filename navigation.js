@@ -137,6 +137,18 @@ var navigation = {
                     "iconFile":"shoes/shoes-1-icon.png",
                     "imageCaption":"Black Shoes",
                     "actionName":"Wear Black Shoes"
+                },
+                {
+                    "filename":"shoes/shoes-2.png",
+                    "iconFile":"shoes/shoes-2-icon.png",
+                    "imageCaption":"Yellow Boots",
+                    "actionName":"Wear Yellow Boots"
+                },
+                {
+                    "filename":"shoes/shoes-8.png",
+                    "iconFile":"shoes/shoes-8-icon.png",
+                    "imageCaption":"Bunny Slippers",
+                    "actionName":"Wear Bunny Slippers"
                 }
 
             ]
