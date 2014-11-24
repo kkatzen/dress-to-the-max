@@ -41,6 +41,7 @@ h1, h2, h3 {
 #thoughts {
 	font-family: Helvetica;
 	margin-left:4px;
+	margin-top: 4px;
 	width: 266px;
 	/*border: 2px solid gray;
 		border-radius: 30px;*/
@@ -51,6 +52,8 @@ h1, h2, h3 {
 	position: absolute;
 	background-size:;
 	text-align: center;
+	z-index: 8;
+
 }
 
 #prompt
@@ -174,6 +177,7 @@ li {
     position: absolute;
     top: 0;
     right: 0px;
+    width: 100%;
     z-index: 5;
 }
 #body {

@@ -4,7 +4,7 @@ var navigation = {
     [
         {
             "divId":"shirt",
-            "iconFile":"shirt.jpg",
+            "iconFile":"shirt/shirt-5-icon.png",
             "imageCaption":"Tops",
             "actionName":"View Shirts",
             "children":
@@ -16,46 +16,34 @@ var navigation = {
                     "actionName":"Wear Fireman Shirt"
                 },
                 {
-                    "filename":"shirt/labcoat.jpg",
-                    "iconFile":"shirt/labcoat.jpg",
+                    "filename":"shirt/shirt-6.png",
+                    "iconFile":"shirt/shirt-6-icon.png",
                     "imageCaption":"Lab Coat",
                     "actionName":"Wear Lab Coat"
                 },
                 {
-                    "filename":"shirt/shirt3.jpg",
-                    "iconFile":"shirt/shirt3.jpg",
+                    "filename":"shirt/shirt-2.png",
+                    "iconFile":"shirt/shirt-2-icon.png",
+                    "imageCaption":"Tee Shirt",
+                    "actionName":"Wear Tree Shirt"
+                },
+                {
+                    "filename":"shirt/shirt-3.png",
+                    "iconFile":"shirt/shirt-3-icon.png",
                     "imageCaption":"Jersey",
                     "actionName":"Wear Jersey"
                 },
                 {
-                    "filename":"shirt/shirt4.jpg",
-                    "iconFile":"shirt/shirt4.jpg",
-                    "imageCaption":"Raincoat",
-                    "actionName":"Wear Raincoat"
+                    "filename":"shirt/shirt-4.png",
+                    "iconFile":"shirt/shirt-4-icon.png",
+                    "imageCaption":"Jacket",
+                    "actionName":"Wear Jacket"
                 },
                 {
-                    "filename":"shirt/shirt4.jpg",
-                    "iconFile":"shirt/shirt4.jpg",
+                    "filename":"shirt/shirt-5.png",
+                    "iconFile":"shirt/shirt-5-icon.png",
                     "imageCaption":"Sweater",
                     "actionName":"Wear Sweater"
-                },
-                {
-                    "filename":"shirt/shirt4.jpg",
-                    "iconFile":"shirt/shirt4.jpg",
-                    "imageCaption":"Tee Shirt",
-                    "actionName":"Wear Tee Shirt"
-                },
-                {
-                    "filename":"shirt/shirt4.jpg",
-                    "iconFile":"shirt/shirt4.jpg",
-                    "imageCaption":"Pajamas",
-                    "actionName":"Wear Pajamas"
-                },
-                {
-                    "filename":"shirt/shirt4.jpg",
-                    "iconFile":"shirt/shirt4.jpg",
-                    "imageCaption":"Hoodie",
-                    "actionName":"Wear Hoodie"
                 }
 
             ]
@@ -120,18 +108,12 @@ var navigation = {
         },
         {
             "divId":"shoes",
-            "iconFile":"shoes.jpg",
+            "iconFile":"shoes/shoes-1-icon.png",
             "imageCaption":"Shoes",
             "actionName":"View Shoes",
             "children":
             [
             
-                {
-                    "filename":"shoes/shoes.jpg",
-                    "iconFile":"shoes/shoes.jpg",
-                    "imageCaption":"shoes",
-                    "actionName":"Wear shoes"
-                },
                 {
                     "filename":"shoes/shoes-1.png",
                     "iconFile":"shoes/shoes-1-icon.png",
@@ -145,6 +127,24 @@ var navigation = {
                     "actionName":"Wear Yellow Boots"
                 },
                 {
+                    "filename":"shoes/shoes-3.png",
+                    "iconFile":"shoes/shoes-3-icon.png",
+                    "imageCaption":"Flip Flops",
+                    "actionName":"Wear Flip Flops"
+                },
+                {
+                    "filename":"shoes/shoes-4.png",
+                    "iconFile":"shoes/shoes-4-icon.png",
+                    "imageCaption":"Cowboy Boots",
+                    "actionName":"Wear Cowboy Boots"
+                },
+                {
+                    "filename":"shoes/shoes-5.png",
+                    "iconFile":"shoes/shoes-5-icon.png",
+                    "imageCaption":"Tennis Shoes",
+                    "actionName":"Wear Tennis Shoes"
+                },
+                {
                     "filename":"shoes/shoes-8.png",
                     "iconFile":"shoes/shoes-8-icon.png",
                     "imageCaption":"Bunny Slippers",
@@ -154,34 +154,35 @@ var navigation = {
             ]
         },
         {
-            "iconFile":"jacket.jpg",
+            "divId":"background",
+            "iconFile":"backgrounds/bg-1.png",
             "imageCaption":"Background",
             "actionName":"View Backgrounds",
             "children":
             [
             
                 {
-                    "filename":"jacket/jacket",
-                    "iconFile":"jacket/jacket",
-                    "imageCaption":"jacket",
-                    "actionName":"Wear jacket"
+                    "filename":"backgrounds/bg-1.png",
+                    "iconFile":"backgrounds/bg-1.png",
+                    "imageCaption":"Beach Background",
+                    "actionName":"Use Beach Background"
+                },
+                {
+                    "filename":"backgrounds/bg-2.png",
+                    "iconFile":"backgrounds/bg-2.png",
+                    "imageCaption":"Pier Background",
+                    "actionName":"Use Pier Background"
                 }
             ]
         },
         {
             "divId":"hat",
-            "iconFile":"hat.jpg",
+            "iconFile":"hat/hat-1-icon.png",
             "imageCaption":"Hats",
             "actionName":"View Hats",
             "children":
             [
             
-                {
-                    "filename":"hat/hat.jpg",
-                    "iconFile":"hat/hat.jpg",
-                    "imageCaption":"Sun Hat",
-                    "actionName":"Wear Sun Hat"
-                },
                 {
                     "filename":"hat/hat-1.png",
                     "iconFile":"hat/hat-1-icon.png",
@@ -192,43 +193,39 @@ var navigation = {
         },
         {
             "divId":"accessories",
-            "iconFile":"accessories.jpg",
+            "iconFile":"accessories/a-3-icon.png",
             "imageCaption":"Accessories",
             "actionName":"View Accessories",
             "children":
             [
             
                 {
-                    "filename":"accessories/accessories.jpg",
-                    "iconFile":"accessories/accessories.jpg",
-                    "imageCaption":"Scarf",
-                    "actionName":"Wear Scarf"
+                    "filename":"accessories/a-1.png",
+                    "iconFile":"accessories/a-1-icon.png",
+                    "imageCaption":"Umbrella",
+                    "actionName":"Wear Umbrella"
                 },
                 {
-                    "filename":"face/face.jpg",
-                    "iconFile":"face/face.jpg",
-                    "imageCaption":"face",
-                    "actionName":"Wear Face"
+                    "filename":"accessories/a-2.png",
+                    "iconFile":"accessories/a-2-icon.png",
+                    "imageCaption":"Pearl Necklace",
+                    "actionName":"Wear Pearl Necklace"
+                },
+                {
+                    "filename":"accessories/a-3.png",
+                    "iconFile":"accessories/a-3-icon.png",
+                    "imageCaption":"Red Scarf",
+                    "actionName":"Wear Red Scarf"
+                },
+                {
+                    "filename":"accessories/a-4.png",
+                    "iconFile":"accessories/a-4-icon.png",
+                    "imageCaption":"stethoscope",
+                    "actionName":"Wear stethoscope"
                 }
             ]
 
         },
-        /*{
-            "divId":"backgrounds",
-            "iconFile":"backgrounds.jpg",
-            "imageCaption":"Backgrounds",
-            "actionName":"View Backgrounds",
-            "children":
-            [
-            
-                {
-                    "filename":"backgrounds/backgrounds.jpg",
-                    "iconFile":"backgrounds/backgrounds.jpg",
-                    "imageCaption":"backgrounds",
-                    "actionName":"Wear backgrounds"
-                }
-            ]
-        },*/
         {
             "divId":"body",
             "iconFile":"body/body-1-icon.png",

@@ -9,7 +9,7 @@ var challenges = {
             "completeFeedback":"Yeah! Now Max is ready to fight any fire!",
             "children":
                 {
-                    "hat":[1],
+                    "hat":[0],
                     "shirt":[0],
                     "pants":[6],
                     "shoes":[0,1]
@@ -23,9 +23,20 @@ var challenges = {
             "children":
                 {
                     "pants":[5],
-                    "shoes":[3],
+                    "shoes":[5],
+                }
+        },
+        {
+            "challengePrompt":"Dress Max like an Athlete!",
+            "positiveFeedback":"This will be great!",
+            "negativeFeedback":"Is this the best choice for an athele?",
+            "completeFeedback":"Yeah! Now Max is ready to play sports!",
+            "children":
+                {
+                    "pants":[1],
+                    "shirt":[3],
+                    "shoes":[4],
                 }
         }
-
     ]
 }
