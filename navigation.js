@@ -44,6 +44,12 @@ var navigation = {
                     "iconFile":"shirt/shirt-5-icon.png",
                     "imageCaption":"Sweater",
                     "actionName":"Wear Sweater"
+                },
+                {
+                    "filename":"nothing.png",
+                    "iconFile":"none.png",
+                    "imageCaption":"None",
+                    "actionName":"Remove Shoes"
                 }
 
             ]
@@ -149,8 +155,13 @@ var navigation = {
                     "iconFile":"shoes/shoes-8-icon.png",
                     "imageCaption":"Bunny Slippers",
                     "actionName":"Wear Bunny Slippers"
+                },
+                {
+                    "filename":"nothing.png",
+                    "iconFile":"none.png",
+                    "imageCaption":"None",
+                    "actionName":"Remove Shoes"
                 }
-
             ]
         },
         {
@@ -172,6 +183,12 @@ var navigation = {
                     "iconFile":"backgrounds/bg-2.png",
                     "imageCaption":"Pier Background",
                     "actionName":"Use Pier Background"
+                },
+                {
+                    "filename":"nothing.png",
+                    "iconFile":"none.png",
+                    "imageCaption":"None",
+                    "actionName":"Remove Shoes"
                 }
             ]
         },
@@ -188,6 +205,12 @@ var navigation = {
                     "iconFile":"hat/hat-1-icon.png",
                     "imageCaption":"Fire Helmet",
                     "actionName":"Wear Fire Helmet"
+                },
+                {
+                    "filename":"nothing.png",
+                    "iconFile":"none.png",
+                    "imageCaption":"None",
+                    "actionName":"Remove Shoes"
                 }
             ]
         },
@@ -222,6 +245,12 @@ var navigation = {
                     "iconFile":"accessories/a-4-icon.png",
                     "imageCaption":"stethoscope",
                     "actionName":"Wear stethoscope"
+                },
+                {
+                    "filename":"nothing.png",
+                    "iconFile":"none.png",
+                    "imageCaption":"None",
+                    "actionName":"Remove Shoes"
                 }
             ]
 
