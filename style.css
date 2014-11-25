@@ -10,6 +10,16 @@ h1, h2, h3 {
 	margin-bottom: 10px;
 }
 
+#promptButton{
+	position: relative;
+	left: 120px;
+}
+
+#promptButtonCancel{
+	position: relative;
+	left: 125px;
+}
+
 #wrapper {
 	border: 3px solid #DF97AE;
 	width: 800px;
