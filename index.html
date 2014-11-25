@@ -452,6 +452,20 @@
             }
         }
 
+        function goToPrintPage(){
+            var url = 'print.php?a=b';
+            for (val in currentClothes) {
+                if (currentClothes.hasOwnProperty(val)) {
+                    url += "&" + val + "=" + currentClothes[val];
+                }
+            }
+            open(url);
+        }
+
+        function goToGithub(){
+            open("https://github.com/kkatzen/dress-to-the-max");
+        }
+
 		</script>
 	</head>
 	<body onload="loadScreen()">
@@ -523,8 +537,9 @@
 				</ul>
 			</div>
 		</div>
-		<p class="footer">
-		UNC Chapel Hill, Maegan Clawges, Krista Katzenmeyer, Jon Medenblik.  <a href="https://github.com/kkatzen/dress-to-the-max">Github</a>
-		</p>
+        <p class="footer">
+            <button class="footerButton" onclick="goToPrintPage();">Print</button>
+            <button class="footerButton" onclick="goToGithub();">About</button>
+        </p>
 	</body>
 </html>
