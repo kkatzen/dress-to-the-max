@@ -14,6 +14,7 @@
         var CLEAR = "clearAll";
         var NONE = "none";  //ie there is one option- close it
         var promptAction = NONE;
+        var thoughtTimeout;
 
         window.clearInterval(intv);
         var intv = window.setInterval(function(){
@@ -90,7 +91,8 @@
         function showThought(text) {
             document.getElementById("thoughts").innerHTML = text;
             document.getElementById("thoughts").style.visibility="visible";
-            window.setTimeout(function(){hideDiv("thoughts")},2500)
+            window.clearTimeout(thoughtTimeout);
+            thoughtTimeout = window.setTimeout(function(){hideDiv("thoughts")},2500);
         }
 
         function showCongrats(text) {
