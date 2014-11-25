@@ -150,22 +150,24 @@
             //increment which item we're currently selecting
             highlightedItem = highlightedItem+1;
             maxLength = currentParent.children.length;
+           
             
             if(currentLevel > 0){  //add one for back button if not homescreen
                 maxLength = maxLength +1;  
-            }else {
-                if(challengeComplete==true){maxLength++;}
             }
             
-            //end of loop, begin at zero
+            //end of loop, begin at zero?
             if(highlightedItem == maxLength){
+                var nextItem = (challengeComplete==true) ? 9 : 0;
+                highlightedItem = nextItem;
+            }else if(highlightedItem > maxLength){
                 highlightedItem = 0;
             }
             
             //add action name
             if(currentLevel > 0 && highlightedItem == currentParent.children.length){
                 document.getElementById("actionText").innerHTML = "Go back";
-            }else if(currentLevel == 0 && highlightedItem == 9){
+            }else if(highlightedItem == 9){
                 document.getElementById("actionText").innerHTML = "Next Challenge";
             } else{
                 document.getElementById("actionText").innerHTML = currentParent.children[highlightedItem].actionName;
@@ -174,7 +176,6 @@
             //highlight current selection 
             document.getElementById("item" + highlightedItem).className = "selected";
             }
-		
 
 		}
 		
