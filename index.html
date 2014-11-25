@@ -106,6 +106,7 @@
             if(parameter == "prompt"){
                 promptOpen = false;
                 document.getElementById("promptButtonCancel").style.visibility="hidden"; 
+                //document.getElementById("promptButton").setAttribute("centered", "true");//new added line
                 //make sure cancel button not visible also
             }
             if (parameter != "thoughts") {
@@ -116,6 +117,12 @@
         function showPrompt(text) {
             var cancelButtonVisibility = (promptAction == NONE) ? "hidden" : "visible";
             document.getElementById("promptButtonCancel").style.visibility=cancelButtonVisibility;
+            if (cancelButtonVisibility == "hidden"){
+                document.getElementById("promptButton").setAttribute("centered", "true");//other added line
+            }
+            else {
+                document.getElementById("promptButton").setAttribute("centered", "false");
+            }
             document.getElementById("promptButtonCancel").className = "unSelected";
             
             promptOpen = true;
@@ -472,7 +479,7 @@
             </div>
 			<h1>Dress to the Max</h1>
             <div id ="prompt">
-                <span id="promptText"></span><br>
+                <span id="promptText"></span><br><br>
                 <ul>
                     <li id="promptButton" onclick="itemClick('prompt')" onmouseover="itemHover('prompt')" onmouseout="itemHoverOff('prompt')">OK
                     </li>
