@@ -22,8 +22,8 @@ var challenges = {
             "completeFeedback":"Yeah! Now Max is ready for bed!",
             "children":
                 {
-                    "pants":[5],
-                    "shoes":[5],
+                    "pants":[5, 2],
+                    "shoes":[5, 6],
                 }
         },
         {
@@ -86,7 +86,7 @@ var challenges = {
             "children":
                 {
                     "pants":[4],
-                    "shirt":[5],
+                    "shirt":[4],
                     "body":[6],
                 }
         }
