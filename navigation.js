@@ -197,6 +197,18 @@ var navigation = {
                     "actionName":"Use Outer Space"
                 },
                 {
+                    "filename":"backgrounds/bg-5.png",
+                    "iconFile":"backgrounds/bg-5.png",
+                    "imageCaption":"City",
+                    "actionName":"Use City"
+                },
+                {
+                    "filename":"backgrounds/bg-6.png",
+                    "iconFile":"backgrounds/bg-6.png",
+                    "imageCaption":"Mountains",
+                    "actionName":"Use Mountains"
+                },
+                {
                     "filename":"nothing.png",
                     "iconFile":"reset-button.png",
                     "imageCaption":"None",
@@ -360,26 +372,32 @@ var navigation = {
                 {
                     "filename":"hair/hair-3.png",
                     "iconFile":"hair/hair-3-icon.png",
-                    "imageCaption":"hair1",
-                    "actionName":"Wear hair1"
+                    "imageCaption":"Red Pigtails",
+                    "actionName":"Wear Red Pigtails"
                 },
                 {
                     "filename":"hair/hair-4.png",
                     "iconFile":"hair/hair-4-icon.png",
-                    "imageCaption":"hair1",
-                    "actionName":"Wear hair1"
+                    "imageCaption":"Combed Hair",
+                    "actionName":"Wear Combed Hair"
                 },
                 {
                     "filename":"hair/hair-5.png",
                     "iconFile":"hair/hair-5-icon.png",
-                    "imageCaption":"hair1",
-                    "actionName":"Wear hair1"
+                    "imageCaption":"Bearded Hair",
+                    "actionName":"Wear Bearded Hair"
                 },
                 {
                     "filename":"hair/hair-6.png",
                     "iconFile":"hair/hair-6-icon.png",
-                    "imageCaption":"hair1",
-                    "actionName":"Wear hair1"
+                    "imageCaption":"Banged Hair",
+                    "actionName":"Wear Banged Hair"
+                },     
+                {
+                    "filename":"hair/hair-7.png",
+                    "iconFile":"hair/hair-7-icon.png",
+                    "imageCaption":"Mohawk",
+                    "actionName":"Wear Mohawk"
                 },     
                 {
                     "filename":"nothing.png",
