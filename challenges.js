@@ -37,6 +37,57 @@ var challenges = {
                     "shirt":[3],
                     "shoes":[4],
                 }
+        },
+        {
+            "challengePrompt":"It's cold outside! Let's dress Max in something warm.",
+            "positiveFeedback":"This will help keep Max warm!",
+            "negativeFeedback":"Are you sure this will keep Max warm?",
+            "completeFeedback":"Yeah! Now Max is ready to go out in the cold!",
+            "children":
+                {
+                    "pants":[0,2,4,5,6],
+                    "shirt":[0,4,5],
+                    "shoes":[0,1,3],
+                    "accessories":[2],
+                }
+        },
+        {
+            "challengePrompt":"It's raining! Let's make sure Max is ready for the rain.",
+            "positiveFeedback":"This should help protect Max from the rain!",
+            "negativeFeedback":"Are you sure there isn't another a better option?",
+            "completeFeedback":"Awesome! Now Max is ready for the rain!",
+            "children":
+                {
+                    "pants":[0,2,6],
+                    "shirt":[0,4,5],
+                    "shoes":[1],
+                    "accessories":[0],
+                }
+        },
+        {
+            "challengePrompt":"Let's dress Max like a doctor!",
+            "positiveFeedback":"Great pick!",
+            "negativeFeedback":"Are you sure there isn't a better option?",
+            "completeFeedback":"Max is all ready to see patients now!",
+            "children":
+                {
+                    "pants":[0,4,6],
+                    "shirt":[1],
+                    "accessories":[3],
+                    "shoes":[0,4]
+                }
+        },
+        {
+            "challengePrompt":"Max loves purple.  Let's dress Max in as much purple as we can!",
+            "positiveFeedback":"Yay! More purple!",
+            "negativeFeedback":"Are you sure there isn't another purple option?",
+            "completeFeedback":"Alright! Max is all purpled out!",
+            "children":
+                {
+                    "pants":[4],
+                    "shirt":[5],
+                    "body":[6],
+                }
         }
     ]
 }

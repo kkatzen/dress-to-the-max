@@ -173,6 +173,11 @@ li {
 	border: 1px solid red;
 	background: yellow;
 }
+.unSelected {
+	border: 1px solid gray;
+	background: white;
+}
+
 #background {
     position: absolute;
     top: 0;

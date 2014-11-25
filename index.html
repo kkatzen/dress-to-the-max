@@ -453,17 +453,17 @@
 
                 <h3>Interaction Style</h3>
                 <button class="selected" id="interaction0" onclick="changeInteractionMode('click')">Click</button>
-                <button onclick="changeInteractionMode('oneswitch')" id="interaction1" >One Switch</button>
-                <button onclick="changeInteractionMode('twoswitch')"id="interaction2" >Two Switch</button><br /><br />
+                <button class="unSelected" onclick="changeInteractionMode('oneswitch')" id="interaction1" >One Switch</button>
+                <button class="unSelected" onclick="changeInteractionMode('twoswitch')"id="interaction2" >Two Switch</button><br /><br />
                 <div id ="timerSettings">
                     <h3>Timer Speed</h3>
                     <button class="selected" id="speed0" onclick="changeSpeed('0')">1 Second</button>
-                    <button onclick="changeSpeed('1')" id="speed1" >2.5 Seconds</button>
-                    <button onclick="changeSpeed('2')"id="speed2" >3.5 Seconds</button><br /><br />
+                    <button class="unSelected" onclick="changeSpeed('1')" id="speed1" >2.5 Seconds</button>
+                    <button class="unSelected" onclick="changeSpeed('2')"id="speed2" >3.5 Seconds</button><br /><br />
                 </div>
                 <h3>Challenge vs Freeplay</h3>
                 <button class="selected" onclick="changePlayMode('freeplay')" id="gameMode0">Freeplay</button>
-                <button onclick="changePlayMode('challenge')" id="gameMode1" >Challenge</button><br /><br />
+                <button class="unSelected" onclick="changePlayMode('challenge')" id="gameMode1" >Challenge</button><br /><br />
                 <h3>Play Game</h3>
                 <button onclick="hideDiv('settings')">Done</button>
             </div>
@@ -478,7 +478,6 @@
 
                 </ul>
             </div>
-
             <div id ="congrats">
                 Yeah, you got it!
             </div>
