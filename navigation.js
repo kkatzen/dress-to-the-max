@@ -378,14 +378,14 @@ var navigation = {
                 {
                     "filename":"hair/hair-3.png",
                     "iconFile":"hair/hair-3-icon.png",
-                    "imageCaption":"Red Pigtails",
-                    "actionName":"Wear Red Pigtails"
+                    "imageCaption":"Combed Hair",
+                    "actionName":"Wear Combed Hair"
                 },
                 {
                     "filename":"hair/hair-4.png",
                     "iconFile":"hair/hair-4-icon.png",
-                    "imageCaption":"Combed Hair",
-                    "actionName":"Wear Combed Hair"
+                    "imageCaption":"Red Pigtails",
+                    "actionName":"Wear Red Pigtails"
                 },
                 {
                     "filename":"hair/hair-5.png",
