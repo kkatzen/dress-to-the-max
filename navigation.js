@@ -285,8 +285,14 @@ var navigation = {
                 {
                     "filename":"accessories/a-4.png",
                     "iconFile":"accessories/a-4-icon.png",
-                    "imageCaption":"stethoscope",
-                    "actionName":"Wear stethoscope"
+                    "imageCaption":"Stethoscope",
+                    "actionName":"Wear Stethoscope"
+                },
+                {
+                    "filename":"accessories/a-5.png",
+                    "iconFile":"accessories/a-5-icon.png",
+                    "imageCaption":"Sunglasses",
+                    "actionName":"Wear Sunglasses"
                 },
                 {
                     "filename":"nothing.png",
