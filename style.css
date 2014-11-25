@@ -33,11 +33,12 @@ h1 {
 #promptButtonCancel{
 	position: relative;
 	left: 125px;
+	vertical-align: middle;
 }
 
 #wrapper {
 	border: 2px solid #AFAFAF;
-	width: 800px;
+	width: 820px;
 	background: #FBFBF7;
 	margin: auto;
 	border-radius: 10px;
@@ -85,7 +86,7 @@ h1 {
 #prompt
  {
 	width: 500px;
-	border: 3px solid #DF97AE;
+	border: 3px solid #AFAFAF;
 	background-color: white;
 	margin-left: 140px;
 	margin-top: 70px;
@@ -144,7 +145,7 @@ h1 {
 }
 #settings
  {
-	width: 760px;
+	width: 780px;
 	background: #FBFBF7;
 	padding: 20px;
 	border-radius: 10px;
