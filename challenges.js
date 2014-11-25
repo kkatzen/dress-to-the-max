@@ -49,6 +49,7 @@ var challenges = {
                     "shirt":[0,4,5],
                     "shoes":[0,1,3],
                     "accessories":[2],
+                    "hat":[3]
                 }
         },
         {

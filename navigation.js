@@ -47,7 +47,7 @@ var navigation = {
                 },
                 {
                     "filename":"nothing.png",
-                    "iconFile":"none.png",
+                    "iconFile":"reset-button.png",
                     "imageCaption":"None",
                     "actionName":"Remove Shoes"
                 }
@@ -158,7 +158,7 @@ var navigation = {
                 },
                 {
                     "filename":"nothing.png",
-                    "iconFile":"none.png",
+                    "iconFile":"reset-button.png",
                     "imageCaption":"None",
                     "actionName":"Remove Shoes"
                 }
@@ -186,7 +186,7 @@ var navigation = {
                 },
                 {
                     "filename":"nothing.png",
-                    "iconFile":"none.png",
+                    "iconFile":"reset-button.png",
                     "imageCaption":"None",
                     "actionName":"Remove Shoes"
                 }
@@ -207,8 +207,26 @@ var navigation = {
                     "actionName":"Wear Fire Helmet"
                 },
                 {
+                    "filename":"hat/hat-2.png",
+                    "iconFile":"hat/hat-2-icon.png",
+                    "imageCaption":"Baseball Hat",
+                    "actionName":"Wear Baseball Hat"
+                },
+                {
+                    "filename":"hat/hat-3.png",
+                    "iconFile":"hat/hat-3-icon.png",
+                    "imageCaption":"Cowboy Hat",
+                    "actionName":"Wear Cowboy Hat"
+                },
+                {
+                    "filename":"hat/hat-4.png",
+                    "iconFile":"hat/hat-4-icon.png",
+                    "imageCaption":"Warm Hat",
+                    "actionName":"Wear Warm Hat"
+                },
+                {
                     "filename":"nothing.png",
-                    "iconFile":"none.png",
+                    "iconFile":"reset-button.png",
                     "imageCaption":"None",
                     "actionName":"Remove Shoes"
                 }
@@ -248,7 +266,7 @@ var navigation = {
                 },
                 {
                     "filename":"nothing.png",
-                    "iconFile":"none.png",
+                    "iconFile":"reset-button.png",
                     "imageCaption":"None",
                     "actionName":"Remove Shoes"
                 }
@@ -355,10 +373,9 @@ var navigation = {
         },
         {
             "divId":"clear",
-            "iconFile":"settings.jpg",
+            "iconFile":"reset-button.png",
             "imageCaption":"Clear All",
             "actionName":"Clear All Items on Screen",
-           
         }
     ]
 }
