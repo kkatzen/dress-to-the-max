@@ -78,7 +78,7 @@
             if(challengeMode == true){
                 //display 10th button
                 var tenthButtonText = (challengeComplete ? "Next Challenge" : currentChallenge["challengePrompt"]);
-                document.getElementById("item9").innerHTML = tenthButtonText;
+                document.getElementById("item9").innerHTML = "<p>" + tenthButtonText + "</p>";
                 document.getElementById("item9").style.visibility="visible";
                 
                 if(isFirstChallenge){
@@ -364,7 +364,7 @@
                 currentParent = navigation;
                 loadScreen();
                 showCongrats(currentChallenge.completeFeedback);
-                document.getElementById("item9").innerHTML = "Next Challenge";
+                document.getElementById("item9").innerHTML = "<p>Next Challenge</p>";
             }
         }
 

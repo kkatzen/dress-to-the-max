@@ -368,7 +368,13 @@ var navigation = {
                     "iconFile":"hair/hair-6-icon.png",
                     "imageCaption":"hair1",
                     "actionName":"Wear hair1"
-                },                                
+                },     
+                {
+                    "filename":"nothing.png",
+                    "iconFile":"reset-button.png",
+                    "imageCaption":"None",
+                    "actionName":"Remove Hair"
+                }
             ]
         },
         {
