@@ -43,7 +43,7 @@ h1 {
 	margin: auto;
 	border-radius: 10px;
 	margin-bottom: 0px;
-	min-height: 600px;
+	min-height: 620px;
 	box-shadow: 0px 0px 1px #888888;
 	padding-bottom: 20px;
 }
@@ -57,7 +57,7 @@ h1 {
 
 #character {
 	width: 300px;
-	height: 450px;
+	height: 485px;
 	text-align: center;
 	padding: 15px;
 	/*background-image: url('images/body-1.png');*/
@@ -152,7 +152,7 @@ h1 {
 	margin-bottom: 0px;
 	margin: auto;
     position: absolute;
-	min-height: 560px;
+	min-height: 585px;
 	text-align: center;
 	z-index: 100;
 }
@@ -170,7 +170,6 @@ button {
 	margin-left: 30px;
 	float: left;
 	position: relative;
-
 }
 
 .footer {
@@ -179,9 +178,13 @@ button {
 	margin-top: 2px;
 }
 
+.footerButtons {
+	width: 100%;
+	text-align: center;
+}
+
 .footerButton {
-	margin-top: 10px;
-	margin-left: 15px;
+	margin-right: 10px;
 }
 
 ul {

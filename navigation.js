@@ -175,14 +175,26 @@ var navigation = {
                 {
                     "filename":"backgrounds/bg-1.png",
                     "iconFile":"backgrounds/bg-1.png",
-                    "imageCaption":"Beach Background",
-                    "actionName":"Use Beach Background"
+                    "imageCaption":"Beach",
+                    "actionName":"Use Beach"
                 },
                 {
                     "filename":"backgrounds/bg-2.png",
                     "iconFile":"backgrounds/bg-2.png",
-                    "imageCaption":"Pier Background",
-                    "actionName":"Use Pier Background"
+                    "imageCaption":"Pier",
+                    "actionName":"Use Pier"
+                },
+                {
+                    "filename":"backgrounds/bg-3.png",
+                    "iconFile":"backgrounds/bg-3.png",
+                    "imageCaption":"Snow",
+                    "actionName":"Use Snow"
+                },
+                {
+                    "filename":"backgrounds/bg-4.png",
+                    "iconFile":"backgrounds/bg-4.png",
+                    "imageCaption":"Outer Space",
+                    "actionName":"Use Outer Space"
                 },
                 {
                     "filename":"nothing.png",
